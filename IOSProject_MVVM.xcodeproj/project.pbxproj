@@ -113,7 +113,6 @@
 		69AAEFB52A8205A8001240BB /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				69AAEFEF2A8259A9001240BB /* LoginModels */,
 				69AAEFEE2A8259A2001240BB /* HotelModels */,
 				69AAEFEC2A82598F001240BB /* LandMarkModels */,
 			);
@@ -193,13 +192,6 @@
 				69AAF0012A825EB1001240BB /* HotelModel.swift */,
 			);
 			path = HotelModels;
-			sourceTree = "<group>";
-		};
-		69AAEFEF2A8259A9001240BB /* LoginModels */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = LoginModels;
 			sourceTree = "<group>";
 		};
 		69AAF0182A8262EA001240BB /* PropertiesModels */ = {

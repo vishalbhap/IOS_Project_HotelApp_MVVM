@@ -8,45 +8,41 @@
 import SwiftUI
 
 
-struct Hotel_Insights: View {    
-    
-    // Images index
+struct Hotel_Insights: View {
     @State private var currentIndex = 0
-    let images : [String] = ["one","two","three","four","five","six","seven"]
-        
+    let images: [String] = ["one", "two", "three", "four", "five", "six", "seven"]
     var body: some View {
-        VStack{
+        VStack {
             Text("Insights And Views")
                 .font(.title)
                 .foregroundColor(Color.black)
+            // Use transition to animate image changes
             SwiftUI.Image(images[currentIndex])
                 .resizable()
-               .scaledToFit()
-            HStack{
-                ForEach(0..<images.count, id: \.self){
-                    index in Circle()
-                        .fill(self.currentIndex == index ? Color.red: Color.brown)
-                        .frame(width: 10, height: 10)
-                }
-            }
-           Spacer()
+                .scaledToFit()
+                .transition(.opacity) // Apply fade-in and fade-out
+            Spacer()
         }
-       //.padding()
-        .onAppear{
-            Timer.scheduledTimer(withTimeInterval: 2, repeats: true){
-                timer in
-                if self.currentIndex + 1 == self.images.count{
-                    self.currentIndex = 0
-                }else{
-                    self.currentIndex +=  1
-                }
+        .onAppear {
+            animateImages()
+        }
+    }
+    func animateImages() {
+        withAnimation(.easeInOut(duration: 1.0)) {
+            if currentIndex + 1 == images.count {
+                currentIndex = 0
+            } else {
+                currentIndex += 1
             }
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            animateImages()
         }
     }
 }
-
 struct Hotel_Insights_Previews: PreviewProvider {
     static var previews: some View {
         Hotel_Insights()
     }
 }
+
