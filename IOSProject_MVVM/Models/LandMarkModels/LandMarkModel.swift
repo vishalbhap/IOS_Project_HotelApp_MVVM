@@ -7,9 +7,6 @@
 
 import Foundation
 
-
-import Foundation
-
 struct LandMarkModelResponse : Codable {
     let suggestions : [Suggestion]
 
