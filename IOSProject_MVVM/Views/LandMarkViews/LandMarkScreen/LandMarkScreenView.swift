@@ -22,20 +22,17 @@ struct LandMarkScreenView: View {
                                     showLandmarkList = true
                                 })
 
-                // Progress View
                 if landMarkViewModel.isSearching {
                     ProgressView()
                 }
 
-                // landmarkModel Response
+                // landmarkModel Response Message if error
                 Text(landMarkViewModel.landMarkResponseMessage)
 
-                // LandmarkList View
                 if showLandmarkList {
                     LandmarkListView(entities: landMarkViewModel.entities)
                 } else {
-                    // Static Data
-                    StaticLandMarkViews()
+                    StaticLandMarkViews()    // Static Data
                 }
             }
             .navigationBarTitle("Landmarks")

@@ -18,7 +18,7 @@
 		69AAEFDD2A82280D001240BB /* HotelDiscountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AAEFD72A82280D001240BB /* HotelDiscountView.swift */; };
 		69AAEFE22A824AB6001240BB /* StaticLandMarkViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AAEFE12A824AB6001240BB /* StaticLandMarkViews.swift */; };
 		69AAEFE62A824DE3001240BB /* LandMarkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AAEFE52A824DE3001240BB /* LandMarkService.swift */; };
-		69AAEFE82A82509E001240BB /* CommonServiceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AAEFE72A82509E001240BB /* CommonServiceData.swift */; };
+		69AAEFE82A82509E001240BB /* CommonAPIServiceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AAEFE72A82509E001240BB /* CommonAPIServiceData.swift */; };
 		69AAEFEB2A8257FA001240BB /* LandMarkScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AAEFEA2A8257FA001240BB /* LandMarkScreenView.swift */; };
 		69AAEFF12A8259CA001240BB /* LandMarkModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AAEFF02A8259CA001240BB /* LandMarkModel.swift */; };
 		69AAF0092A825EB2001240BB /* HotelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AAEFF92A825EB1001240BB /* HotelResponse.swift */; };
@@ -46,7 +46,7 @@
 		69AAEFD72A82280D001240BB /* HotelDiscountView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDiscountView.swift; sourceTree = "<group>"; };
 		69AAEFE12A824AB6001240BB /* StaticLandMarkViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticLandMarkViews.swift; sourceTree = "<group>"; };
 		69AAEFE52A824DE3001240BB /* LandMarkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandMarkService.swift; sourceTree = "<group>"; };
-		69AAEFE72A82509E001240BB /* CommonServiceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonServiceData.swift; sourceTree = "<group>"; };
+		69AAEFE72A82509E001240BB /* CommonAPIServiceData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonAPIServiceData.swift; sourceTree = "<group>"; };
 		69AAEFEA2A8257FA001240BB /* LandMarkScreenView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandMarkScreenView.swift; sourceTree = "<group>"; };
 		69AAEFF02A8259CA001240BB /* LandMarkModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandMarkModel.swift; sourceTree = "<group>"; };
 		69AAEFF92A825EB1001240BB /* HotelResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelResponse.swift; sourceTree = "<group>"; };
@@ -139,7 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				69AAEFE52A824DE3001240BB /* LandMarkService.swift */,
-				69AAEFE72A82509E001240BB /* CommonServiceData.swift */,
+				69AAEFE72A82509E001240BB /* CommonAPIServiceData.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -285,7 +285,7 @@
 				69AAEFD92A82280D001240BB /* Hotel_Insights.swift in Sources */,
 				69AAEFDD2A82280D001240BB /* HotelDiscountView.swift in Sources */,
 				69AAF0212A826332001240BB /* DesinationInfo.swift in Sources */,
-				69AAEFE82A82509E001240BB /* CommonServiceData.swift in Sources */,
+				69AAEFE82A82509E001240BB /* CommonAPIServiceData.swift in Sources */,
 				69AAF0232A826332001240BB /* Properties.swift in Sources */,
 				69AAEFD82A82280D001240BB /* ReviewByCustomer.swift in Sources */,
 				69AAF0222A826332001240BB /* Reviews.swift in Sources */,

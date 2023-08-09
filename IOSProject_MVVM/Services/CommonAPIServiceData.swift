@@ -13,7 +13,6 @@ struct APIConfig {
 }
 
 class CommonServiceData {
-
     func configureRequest(url: URL, httpMethod: String) -> URLRequest {
         var request = URLRequest(url: url)
         request.httpMethod = httpMethod
