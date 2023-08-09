@@ -15,8 +15,9 @@ class LandMarkViewModel: ObservableObject {
 
     private let landMarkService = LandMarkService()
 
-    func fetchLandMarks(country: String) {
-        if country == "" {
+
+    func fetchLandMarks(location: String) {
+        if location == "" {
             landMarkResponseMessage = "Please enter some location"
             return
         }
@@ -24,7 +25,8 @@ class LandMarkViewModel: ObservableObject {
         self.isSearching = true
         Task {
             do {
-                let decodedData = try await landMarkService.fetchCities(country: country)
+                let decodedData = try await landMarkService.fetchCities(country: location)
+
                 DispatchQueue.main.async {
                     self.landMarkResponse = decodedData
                     self.entities = decodedData.suggestions[0].entities

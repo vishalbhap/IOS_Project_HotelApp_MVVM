@@ -17,20 +17,24 @@ struct LandMarkScreenView: View {
         NavigationView {
             VStack {
                 SearchBarView(textInput: $textInputForLocation, searchAction: {
-                                    landMarkViewModel.fetchLandMarks(country: textInputForLocation)
+                                    landMarkViewModel.fetchLandMarks(location: textInputForLocation)
                                     textInputForLocation = ""
                                     showLandmarkList = true
                                 })
 
+                // Progress View
                 if landMarkViewModel.isSearching {
                     ProgressView()
                 }
 
+                // landmarkModel Response
                 Text(landMarkViewModel.landMarkResponseMessage)
 
+                // LandmarkList View
                 if showLandmarkList {
                     LandmarkListView(entities: landMarkViewModel.entities)
                 } else {
+                    // Static Data
                     StaticLandMarkViews()
                 }
             }
