@@ -10,8 +10,8 @@ import Foundation
 
 class LandMarkService {
 
-    func fetchCities(country: String) async throws -> LandMarkModelResponse {
-        guard let url = URL(string: "https://hotels4.p.rapidapi.com/locations/v2/search?query=\(country)") else {
+    func fetchLandMarksData(location: String) async throws -> LandMarkModelResponse {
+        guard let url = URL(string: "https://hotels4.p.rapidapi.com/locations/v2/search?query=\(location)") else {
             throw SomeError.invalidURL
         }
 

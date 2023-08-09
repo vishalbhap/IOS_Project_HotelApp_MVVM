@@ -25,7 +25,7 @@ class LandMarkViewModel: ObservableObject {
         self.isSearching = true
         Task {
             do {
-                let decodedData = try await landMarkService.fetchCities(country: location)
+                let decodedData = try await landMarkService.fetchLandMarksData(location: location)
 
                 DispatchQueue.main.async {
                     self.landMarkResponse = decodedData
