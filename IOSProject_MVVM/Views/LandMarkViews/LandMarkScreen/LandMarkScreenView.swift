@@ -32,7 +32,9 @@ struct LandMarkScreenView: View {
                         EmptyView()
                     }
 
-                StaticLandMarkViews()
+                    if case .success = landMarkViewModel.state { } else {
+                                        StaticLandMarkViews()
+                                    }
             }
             .alert("Error", isPresented: $landMarkViewModel.hasError, presenting: landMarkViewModel.state) { detail in
                 Button("Retry") {landMarkViewModel.fetchLandMarks()}
