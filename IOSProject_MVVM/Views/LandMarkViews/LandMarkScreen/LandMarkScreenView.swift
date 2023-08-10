@@ -8,38 +8,44 @@
 import Foundation
 import SwiftUI
 
+
 struct LandMarkScreenView: View {
     @ObservedObject var landMarkViewModel: LandMarkViewModel = LandMarkViewModel()
-    @State private var textInputForLocation: String = ""
-    @State private var showLandmarkList: Bool = false
 
     var body: some View {
         NavigationView {
             VStack {
-                SearchBarView(textInput: $textInputForLocation, searchAction: {
-                                    landMarkViewModel.fetchLandMarks(location: textInputForLocation)
-                                    textInputForLocation = ""
-                                    showLandmarkList = true
+                SearchBarView(textInput: $landMarkViewModel.textInputForLocation, searchAction: {
+                                    landMarkViewModel.fetchLandMarks()
                                 })
 
-                if landMarkViewModel.isSearching {
-                    ProgressView()
-                }
+                switch landMarkViewModel.state {
+                    case .success(let entities):
+                    if entities.isEmpty{
+                        Text("No Data Found for this location")
+                        StaticLandMarkViews()
+                    }else{
+                        LandmarkListView(entities: entities)
+                            .navigationBarTitle("Landmarks")
+                    }
 
-                // landmarkModel Response Message if error
-                Text(landMarkViewModel.landMarkResponseMessage)
+                    case .loading:
+                        ProgressView()
+                        StaticLandMarkViews()
 
-                if showLandmarkList {
-                    LandmarkListView(entities: landMarkViewModel.entities)
-                } else {
-                    StaticLandMarkViews()    // Static Data
-                }
+                    case .noInput:
+                        Text("Enter some location")
+                        StaticLandMarkViews()
+
+                    default:
+                        StaticLandMarkViews()
+                    }
             }
-            .navigationBarTitle("Landmarks")
+
+
         }
     }
 }
-
 
 struct LandMarkScreenView_Previews: PreviewProvider {
     static var previews: some View {
