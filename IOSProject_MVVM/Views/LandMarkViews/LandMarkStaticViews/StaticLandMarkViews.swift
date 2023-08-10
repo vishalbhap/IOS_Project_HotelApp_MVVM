@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct StaticLandMarkViews: View {
+    
     var body: some View {
         ScrollView {
             VStack {
