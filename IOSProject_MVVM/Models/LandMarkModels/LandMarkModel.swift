@@ -11,7 +11,7 @@ struct LandMarkModelResponse : Codable {
     let suggestions : [Suggestion]
 
     enum CodingKeys: String, CodingKey {
-        case suggestions = "suggestion"
+        case suggestions = "suggestions"
     }
 }
 

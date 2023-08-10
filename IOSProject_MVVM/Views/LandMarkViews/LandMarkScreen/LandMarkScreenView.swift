@@ -20,15 +20,13 @@ struct LandMarkScreenView: View {
 
                 switch landMarkViewModel.state {
                     case .success(let entities):
-                        if entities.isEmpty{
-                            Text("No Data Found for this location")
-                        }else{
                             LandmarkListView(entities: entities)
                                 .navigationBarTitle("Landmarks")
-                        }
+                    case .dataEmpty:
+                        Text("No Data Found for this location")
                     case .loading:
                         ProgressView()
-                    case .noInput:
+                    case .noTextInput:
                         Text("Enter some location")
                     default:
                         EmptyView()

@@ -15,7 +15,8 @@ class LandMarkViewModel: ObservableObject {
         case loading
         case success(data: [Entity])
         case failed(error: Error)
-        case noInput
+        case noTextInput
+        case dataEmpty
     }
 
     @Published var state: State = .na
@@ -25,7 +26,7 @@ class LandMarkViewModel: ObservableObject {
 
     func fetchLandMarks() {
         if textInputForLocation.isEmpty {
-                    self.state = .noInput
+                    self.state = .noTextInput
                     return
                 }
         self.state = .loading
@@ -33,7 +34,11 @@ class LandMarkViewModel: ObservableObject {
         Task {
             do {
                 let decodedData = try await landMarkService.fetchLandMarksData(location: textInputForLocation)
-                self.state = .success(data: decodedData.suggestions[0].entities)
+                if decodedData.suggestions[0].entities.isEmpty{
+                    self.state = .dataEmpty
+                }else{
+                    self.state = .success(data: decodedData.suggestions[0].entities)
+                }
                 textInputForLocation = ""
             } catch {
                 self.state = .failed(error: error)
