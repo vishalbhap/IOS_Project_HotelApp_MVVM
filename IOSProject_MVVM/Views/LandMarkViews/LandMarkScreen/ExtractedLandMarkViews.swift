@@ -38,7 +38,7 @@ struct LandmarkListView: View {
         List(entities) { entity in
             Text(entity.name)
                 .foregroundColor(.blue)
-                .padding()
+                .padding(.vertical)
                 
         }
     }

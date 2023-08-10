@@ -35,6 +35,7 @@ class LandMarkService {
         case invalidStatusCode
         case invalidURL
         case failedToConfigureRequest
+
     }
     
 }

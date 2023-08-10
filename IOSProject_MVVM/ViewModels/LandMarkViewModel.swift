@@ -18,7 +18,7 @@ class LandMarkViewModel: ObservableObject {
         case noInput
     }
 
-    @Published private(set) var state: State = .na
+    @Published var state: State = .na
     @Published var hasError: Bool = false
     @Published var textInputForLocation: String = ""
     private let landMarkService = LandMarkService()
