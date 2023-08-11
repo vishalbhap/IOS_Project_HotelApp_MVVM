@@ -27,7 +27,7 @@ class CommonServiceData {
             throw CommonError.invalidKey
         }
         if response.statusCode == 404 {
-            throw CommonError.invalidURLORHostName
+            throw CommonError.invalidURLRequest
         }
     }
     
