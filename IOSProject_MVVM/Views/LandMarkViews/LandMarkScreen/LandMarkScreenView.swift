@@ -19,22 +19,24 @@ struct LandMarkScreenView: View {
                 })
 
                 switch landMarkViewModel.state {
-                    case .success(let entities):
-                            LandmarkListView(entities: entities)
+                    case .success(let landmarks):
+                            LandmarkListView(entities: landmarks)
                                 .navigationBarTitle("Landmarks")
+
                     case .dataEmpty:
                         Text("No Data Found for this location")
+
                     case .loading:
                         ProgressView()
+
                     case .noTextInput:
                         Text("Enter some location")
+
                     default:
                         EmptyView()
                     }
 
-                    if case .success = landMarkViewModel.state { } else {
-                                        StaticLandMarkViews()
-                                    }
+                    if case .success = landMarkViewModel.state { } else { StaticLandMarkViews() }
             }
             .alert("Error", isPresented: $landMarkViewModel.hasError, presenting: landMarkViewModel.state) { detail in
                 Button("Retry") {landMarkViewModel.fetchLandMarks()}
@@ -44,7 +46,6 @@ struct LandMarkScreenView: View {
                     Text(error.localizedDescription)
                 }
             }
-            
         }
     }
 }

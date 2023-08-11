@@ -14,6 +14,7 @@ enum CommonError: Error, LocalizedError{
 
     var errorDescription: String? {
         switch self {
+        // For developers information
         case .invalidKey:
             return "Invalid Key. API Key expired or incorrect at server end"
         case .invalidURLRequest:

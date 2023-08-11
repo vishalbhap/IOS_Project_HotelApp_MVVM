@@ -35,8 +35,8 @@ struct LandmarkListView: View {
     var entities: [Entity]
 
     var body: some View {
-        List(entities) { entity in
-            Text(entity.name)
+        List(entities) { landmark in
+            Text(landmark.name)
                 .foregroundColor(.blue)
                 .padding(.vertical)
                 

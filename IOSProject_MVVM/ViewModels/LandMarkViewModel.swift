@@ -11,7 +11,7 @@ import Foundation
 class LandMarkViewModel: ObservableObject {
 
     enum State {
-        case na
+        case none
         case loading
         case success(data: [Entity])
         case failed(error: Error)
@@ -19,7 +19,7 @@ class LandMarkViewModel: ObservableObject {
         case dataEmpty
     }
 
-    @Published var state: State = .na
+    @Published var state: State = .none
     @Published var hasError: Bool = false
     @Published var textInputForLocation: String = ""
     private let landMarkService = LandMarkService()

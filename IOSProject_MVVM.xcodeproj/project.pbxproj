@@ -115,9 +115,9 @@
 				69AAEFB62A8205AE001240BB /* Views */,
 				69AAEFB52A8205A8001240BB /* Models */,
 				69AAEFA72A82058D001240BB /* IOSProject_MVVMApp.swift */,
+				696F0E872A8607320048C851 /* ContentView.swift */,
 				69AAEFAB2A82058F001240BB /* Assets.xcassets */,
 				69AAEFAD2A82058F001240BB /* Preview Content */,
-				696F0E872A8607320048C851 /* ContentView.swift */,
 			);
 			path = IOSProject_MVVM;
 			sourceTree = "<group>";

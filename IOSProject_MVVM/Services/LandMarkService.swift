@@ -17,6 +17,7 @@ class LandMarkService {
         let request = CommonServiceData().configureRequest(url: url, httpMethod: "GET")
         let (data, response) = try await URLSession.shared.data(for: request)
 
+        // For developers error handling
         try CommonServiceData().checkForCommonResponseErrors(response: response as! HTTPURLResponse)
 
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else{
