@@ -44,6 +44,7 @@ struct LandMarkScreenView: View {
                     Text(error.localizedDescription)
                 }
             }
+            
         }
     }
 }

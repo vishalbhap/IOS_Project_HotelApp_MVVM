@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		696F0E842A86006C0048C851 /* LandMarkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696F0E832A86006C0048C851 /* LandMarkError.swift */; };
 		69AAEFA82A82058D001240BB /* IOSProject_MVVMApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AAEFA72A82058D001240BB /* IOSProject_MVVMApp.swift */; };
 		69AAEFAC2A82058F001240BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69AAEFAB2A82058F001240BB /* Assets.xcassets */; };
 		69AAEFAF2A82058F001240BB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 69AAEFAE2A82058F001240BB /* Preview Assets.xcassets */; };
@@ -34,6 +35,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		696F0E832A86006C0048C851 /* LandMarkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandMarkError.swift; sourceTree = "<group>"; };
 		69AAEFA42A82058D001240BB /* IOSProject_MVVM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IOSProject_MVVM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		69AAEFA72A82058D001240BB /* IOSProject_MVVMApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IOSProject_MVVMApp.swift; sourceTree = "<group>"; };
 		69AAEFAB2A82058F001240BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,6 +74,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		696F0E822A86003F0048C851 /* ErrorHandlers */ = {
+			isa = PBXGroup;
+			children = (
+				696F0E832A86006C0048C851 /* LandMarkError.swift */,
+			);
+			path = ErrorHandlers;
+			sourceTree = "<group>";
+		};
 		69AAEF9B2A82058D001240BB = {
 			isa = PBXGroup;
 			children = (
@@ -91,6 +101,7 @@
 		69AAEFA62A82058D001240BB /* IOSProject_MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				696F0E822A86003F0048C851 /* ErrorHandlers */,
 				69AAEFBB2A82062A001240BB /* Services */,
 				69AAEFB82A8205C7001240BB /* ViewModels */,
 				69AAEFB62A8205AE001240BB /* Views */,
@@ -295,6 +306,7 @@
 				69AAEFBF2A820E96001240BB /* LandMarkViewModel.swift in Sources */,
 				69AAEFDC2A82280D001240BB /* HotelMessageTextView.swift in Sources */,
 				69AAF0202A826332001240BB /* Price.swift in Sources */,
+				696F0E842A86006C0048C851 /* LandMarkError.swift in Sources */,
 				69AAEFA82A82058D001240BB /* IOSProject_MVVMApp.swift in Sources */,
 				69AAEFE62A824DE3001240BB /* LandMarkService.swift in Sources */,
 				69AAF0112A825EB2001240BB /* HotelModel.swift in Sources */,

@@ -23,11 +23,7 @@ class CommonServiceData {
     }
 }
 
-enum SomeError: Error {
-    case invalidURL
-    case decodingError
-    case networkError(Error)
-}
+
 
 
 
