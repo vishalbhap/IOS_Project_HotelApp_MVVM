@@ -21,7 +21,18 @@ class CommonServiceData {
         request.setValue(APIConfig.host, forHTTPHeaderField: "x-rapidapi-host")
         return request
     }
+
+    func checkForCommonResponseErrors(response: HTTPURLResponse) throws {
+        if response.statusCode == 403 {
+            throw CommonError.invalidKey
+        }
+        if response.statusCode == 404 {
+            throw CommonError.invalidURLORHostName
+        }
+    }
+    
 }
+
 
 
 

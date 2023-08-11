@@ -10,9 +10,10 @@ import SwiftUI
 @main
 struct IOSProject_MVVMApp: App {
 
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
+        var body: some Scene {
+            WindowGroup {
+                ContentView()
+
+            }
         }
-    }
 }

@@ -7,13 +7,14 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
 
     @ObservedObject var networkManager = NetworkManager()
 
     var body: some View {
             if networkManager.isConnected {
-                LandMarkScreenView()
+                    LandMarkScreenView()
             } else {
                 Text(networkManager.connectionDescription)
             }
