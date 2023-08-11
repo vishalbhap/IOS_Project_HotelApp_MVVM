@@ -9,9 +9,10 @@ import SwiftUI
 
 @main
 struct IOSProject_MVVMApp: App {
+
     var body: some Scene {
         WindowGroup {
-            LandMarkScreenView()
+            ContentView()
         }
     }
 }
