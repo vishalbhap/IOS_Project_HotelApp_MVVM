@@ -20,7 +20,7 @@ struct HotelModel: Codable, Identifiable{
        case strikeouprice
        case ratingcount
        case star
-       case url
+       case imageUrl
        case destination
     }
 
@@ -29,5 +29,5 @@ struct HotelModel: Codable, Identifiable{
     var ratingcount: Int
     var star: Double
     var destination: Double
-    var url: String
+    var imageUrl: String
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HotelResponse : Codable {
+struct HotelListResponse : Codable {
     let data : Data?
 
     enum CodingKeys: String, CodingKey {
@@ -16,7 +16,7 @@ struct HotelResponse : Codable {
 }
 
 struct Data : Codable {
-    let propertySearch : PropertySearch
+    let propertySearch : PropertySearch?
 
     enum CodingKeys: String, CodingKey {
         case propertySearch = "propertySearch"
@@ -24,7 +24,7 @@ struct Data : Codable {
 }
 
 struct PropertySearch : Codable {
-    let properties : [Properties]
+    let properties : [Properties]?
 
     enum CodingKeys: String, CodingKey {
         case properties = "properties"

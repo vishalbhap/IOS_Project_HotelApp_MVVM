@@ -36,11 +36,16 @@ struct LandmarkListView: View {
 
     var body: some View {
         List(entities) { landmark in
-            Text(landmark.name)
-                .foregroundColor(.blue)
-                .padding(.vertical)
-                
+            NavigationLink {
+                HotelListScreenView(geoId: landmark.geoId)
+            } label: {
+                Text(landmark.name)
+                    .foregroundColor(.blue)
+                    .padding(.vertical)
+            }
         }
     }
 }
+
+
 

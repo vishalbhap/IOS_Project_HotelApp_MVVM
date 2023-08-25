@@ -1,14 +1,15 @@
 //
-//  LandMarkError.swift
+//  HotelListError.swift
 //  IOSProject_MVVM
 //
-//  Created by Vishal Bhapkar on 11/08/23.
+//  Created by Vishal Bhapkar on 16/08/23.
 //
 
 import Foundation
 
-enum LandMarkServiceError: Error, LocalizedError {
+enum HotelListServiceError: Error, LocalizedError {
     case invalidURL
+    case encodingFailed
     case serverError
     case invalidData
     case unknown(Error)
@@ -17,6 +18,8 @@ enum LandMarkServiceError: Error, LocalizedError {
         switch self {
         case .invalidURL:
             return "The URL was invalid, please try again"
+        case .encodingFailed:
+            return "Failed to encode request data to JSON"
         case .serverError:
             return "There was an error with the server. Please try again later"
         case .invalidData:
@@ -25,5 +28,4 @@ enum LandMarkServiceError: Error, LocalizedError {
             return error.localizedDescription
         }
     }
-
 }

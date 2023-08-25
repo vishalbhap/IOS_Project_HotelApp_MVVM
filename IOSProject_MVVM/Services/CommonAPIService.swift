@@ -8,7 +8,7 @@
 import Foundation
 
 struct APIConfig {
-    static let apiKey = "a5dc511090mshe2f6e52f07d26aep1f378fjsncf83e7ea63c9"
+    static let apiKey = "dc1985c65dmsh246f7af80a714d1p126255jsn72836cf8354b"
     static let host = "hotels4.p.rapidapi.com"
 }
 
@@ -29,13 +29,11 @@ class CommonServiceData {
         if response.statusCode == 404 {
             throw CommonError.invalidURLRequest
         }
+        if response.statusCode == 429 {
+            throw CommonError.requestQuotaFull
+        }
     }
     
 }
-
-
-
-
-
 
 

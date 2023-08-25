@@ -10,12 +10,12 @@ import Foundation
 struct Properties : Codable, Identifiable{
     let id : String
     let name : String
-    let propertyImage : PropertyImage
-    let destinationInfo : DestinationInfo
+    let propertyImage : PropertyImage?
+    let destinationInfo : DestinationInfo?
     let mapMarker : MapMarker
-    let price : Price
+    let price : Price?
     let reviews : Reviews?
-    let star : String?
+    let star : Double?
     let regionId : String
 
     enum CodingKeys: String, CodingKey {
