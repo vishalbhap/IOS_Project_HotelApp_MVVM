@@ -12,7 +12,7 @@ struct SplashView: View {
 
     var body: some View {
         VStack {
-            SwiftUI.Image("1") // Replace with your logo image name
+            SwiftUI.Image("splash10") // Replace with your logo image name
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 150, height: 150)

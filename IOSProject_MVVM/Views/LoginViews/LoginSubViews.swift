@@ -101,6 +101,7 @@ struct KeepSignedForgotPasswordView: View {
                 .toggleStyle(RectangleCheckboxStyle())
 
             Text("Forgot Password?")
+                .foregroundColor(.gray)
         }
     }
 }

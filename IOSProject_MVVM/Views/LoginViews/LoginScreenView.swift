@@ -18,7 +18,6 @@ struct LoginScreenView: View {
                 LoginScreenBackground()
 
                 VStack {
-
                         LoginTitle()
 
                         EmailInputFieldView(loginViewModel: loginViewModel)

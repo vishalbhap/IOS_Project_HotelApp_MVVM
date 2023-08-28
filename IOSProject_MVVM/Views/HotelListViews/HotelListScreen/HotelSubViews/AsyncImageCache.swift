@@ -19,7 +19,9 @@ class ImageLoader: ObservableObject {
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
             if let image = UIImage(data: data) {
-                imageCache[url] = image
+                DispatchQueue.main.async { // Update the cache on the main thread
+                    self.imageCache[url] = image
+                }
             }
         } catch {
             print("Image download error: \(error)")
