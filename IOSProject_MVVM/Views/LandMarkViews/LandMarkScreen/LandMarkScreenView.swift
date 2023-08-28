@@ -13,7 +13,7 @@ struct LandMarkScreenView: View {
     @EnvironmentObject var loginViewModel: LoginViewModel
 
     var body: some View {
-//        NavigationView {
+        NavigationView {
             VStack {
 
                 SearchBarView(textInput: $landMarkViewModel.textInputForLocation, searchAction: {
@@ -63,13 +63,15 @@ struct LandMarkScreenView: View {
                             .foregroundColor(.red)
                     }
                 )
-//        }
+        }
     }
 }
 
 struct LandMarkScreenView_Previews: PreviewProvider {
     static var previews: some View {
+//        LandMarkScreenView()
         LandMarkScreenView()
+                    .environmentObject(LoginViewModel())
     }
 }
 
