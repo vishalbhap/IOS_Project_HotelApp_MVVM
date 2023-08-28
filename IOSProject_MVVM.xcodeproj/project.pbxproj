@@ -133,19 +133,13 @@
 		696F0EDD2A8CA6150048C851 /* HotelListViews */ = {
 			isa = PBXGroup;
 			children = (
-				696F0EDE2A8CA6360048C851 /* HotelListScreen */,
+				69FD128B2A961A5200712630 /* HotelListFunctions.swift */,
+				69FD12892A960DE000712630 /* SortingButtonView.swift */,
+				69FD128E2A962F9100712630 /* HotelSearchBarView.swift */,
+				69FD12902A962FBF00712630 /* HotelListItemView.swift */,
+				69FD12922A96808F00712630 /* AsyncImageCache.swift */,
 			);
 			path = HotelListViews;
-			sourceTree = "<group>";
-		};
-		696F0EDE2A8CA6360048C851 /* HotelListScreen */ = {
-			isa = PBXGroup;
-			children = (
-				69FD128D2A962F4800712630 /* HotelSubViews */,
-				696F0EDF2A8CA6560048C851 /* HotelListScreenView.swift */,
-				69FD128B2A961A5200712630 /* HotelListFunctions.swift */,
-			);
-			path = HotelListScreen;
 			sourceTree = "<group>";
 		};
 		69AAEF9B2A82058D001240BB = {
@@ -167,6 +161,7 @@
 		69AAEFA62A82058D001240BB /* IOSProject_MVVM */ = {
 			isa = PBXGroup;
 			children = (
+				69FD12BC2A9CDA5600712630 /* Screens */,
 				696F0E822A86003F0048C851 /* ErrorHandlers */,
 				69AAEFBB2A82062A001240BB /* Services */,
 				69AAEFB82A8205C7001240BB /* ViewModels */,
@@ -201,7 +196,6 @@
 		69AAEFB62A8205AE001240BB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				69FD12A62A9BCE1200712630 /* SplashScreen */,
 				69FD129B2A98A03100712630 /* LoginViews */,
 				696F0EDD2A8CA6150048C851 /* HotelListViews */,
 				69AAEFC02A8211D7001240BB /* LandMarkViews */,
@@ -234,7 +228,7 @@
 		69AAEFC02A8211D7001240BB /* LandMarkViews */ = {
 			isa = PBXGroup;
 			children = (
-				69AAEFE92A8257CB001240BB /* LandMarkScreen */,
+				69E6E18A2A838B18001D7C83 /* ExtractedLandMarkViews.swift */,
 				69AAEFD12A822730001240BB /* LandMarkStaticViews */,
 			);
 			path = LandMarkViews;
@@ -251,15 +245,6 @@
 				69AAEFE12A824AB6001240BB /* StaticLandMarkViews.swift */,
 			);
 			path = LandMarkStaticViews;
-			sourceTree = "<group>";
-		};
-		69AAEFE92A8257CB001240BB /* LandMarkScreen */ = {
-			isa = PBXGroup;
-			children = (
-				69AAEFEA2A8257FA001240BB /* LandMarkScreenView.swift */,
-				69E6E18A2A838B18001D7C83 /* ExtractedLandMarkViews.swift */,
-			);
-			path = LandMarkScreen;
 			sourceTree = "<group>";
 		};
 		69AAEFEC2A82598F001240BB /* LandMarkModels */ = {
@@ -294,17 +279,6 @@
 			path = PropertiesModels;
 			sourceTree = "<group>";
 		};
-		69FD128D2A962F4800712630 /* HotelSubViews */ = {
-			isa = PBXGroup;
-			children = (
-				69FD12892A960DE000712630 /* SortingButtonView.swift */,
-				69FD128E2A962F9100712630 /* HotelSearchBarView.swift */,
-				69FD12902A962FBF00712630 /* HotelListItemView.swift */,
-				69FD12922A96808F00712630 /* AsyncImageCache.swift */,
-			);
-			path = HotelSubViews;
-			sourceTree = "<group>";
-		};
 		69FD12942A989F1E00712630 /* LoginModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,19 +291,21 @@
 		69FD129B2A98A03100712630 /* LoginViews */ = {
 			isa = PBXGroup;
 			children = (
-				69FD129C2A98A06100712630 /* LoginScreenView.swift */,
 				69FD12A02A98A66400712630 /* LoginScreenBackround.swift */,
 				69FD12A22A98A6CF00712630 /* LoginSubViews.swift */,
 			);
 			path = LoginViews;
 			sourceTree = "<group>";
 		};
-		69FD12A62A9BCE1200712630 /* SplashScreen */ = {
+		69FD12BC2A9CDA5600712630 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
 				69FD12A92A9BCE6400712630 /* SplashScreenView.swift */,
+				69FD129C2A98A06100712630 /* LoginScreenView.swift */,
+				69AAEFEA2A8257FA001240BB /* LandMarkScreenView.swift */,
+				696F0EDF2A8CA6560048C851 /* HotelListScreenView.swift */,
 			);
-			path = SplashScreen;
+			path = Screens;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

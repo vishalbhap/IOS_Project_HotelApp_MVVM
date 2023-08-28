@@ -55,20 +55,16 @@ class LandMarkViewModel: ObservableObject {
         }
 
     func fetchLandMarks(countryName: String) {
-        self.textInputForLocation = countryName
-        if textInputForLocation.isEmpty {
-                    self.state = .noTextInput
-                    return
-                }
         self.state = .loading
         self.hasError = false
         Task {
             do {
-                let decodedData = try await landMarkService.fetchLandMarksData(location: textInputForLocation)
+                let decodedData = try await landMarkService.fetchLandMarksData(location: countryName)
                 if decodedData.suggestions[0].entities.isEmpty{
                     self.state = .dataEmpty
                 }else{
                     self.state = .success(data: decodedData.suggestions[0].entities)
+                    self.textInputForLocation = countryName
                 }
                 textInputForLocation = ""
             } catch {
