@@ -10,9 +10,10 @@ import SwiftUI
 
 struct LandMarkScreenView: View {
     @ObservedObject var landMarkViewModel: LandMarkViewModel = LandMarkViewModel()
+    
 
     var body: some View {
-        NavigationView {
+//        NavigationView {
             VStack {
                 SearchBarView(textInput: $landMarkViewModel.textInputForLocation, searchAction: {
                     landMarkViewModel.fetchLandMarks()
@@ -46,7 +47,9 @@ struct LandMarkScreenView: View {
                     Text(error.localizedDescription)
                 }
             }
-        }
+            .navigationBarBackButtonHidden()
+            .navigationTitle("Welcome to Hotels")
+//        }
     }
 }
 

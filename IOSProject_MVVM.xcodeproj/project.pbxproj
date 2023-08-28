@@ -53,6 +53,7 @@
 		69FD12A12A98A66400712630 /* LoginScreenBackround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD12A02A98A66400712630 /* LoginScreenBackround.swift */; };
 		69FD12A32A98A6CF00712630 /* LoginSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD12A22A98A6CF00712630 /* LoginSubViews.swift */; };
 		69FD12A52A98B18F00712630 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD12A42A98B18F00712630 /* LoginError.swift */; };
+		69FD12AA2A9BCE6400712630 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD12A92A9BCE6400712630 /* SplashScreenView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +104,7 @@
 		69FD12A02A98A66400712630 /* LoginScreenBackround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenBackround.swift; sourceTree = "<group>"; };
 		69FD12A22A98A6CF00712630 /* LoginSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSubViews.swift; sourceTree = "<group>"; };
 		69FD12A42A98B18F00712630 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
+		69FD12A92A9BCE6400712630 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -199,6 +201,7 @@
 		69AAEFB62A8205AE001240BB /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				69FD12A62A9BCE1200712630 /* SplashScreen */,
 				69FD129B2A98A03100712630 /* LoginViews */,
 				696F0EDD2A8CA6150048C851 /* HotelListViews */,
 				69AAEFC02A8211D7001240BB /* LandMarkViews */,
@@ -321,6 +324,14 @@
 			path = LoginViews;
 			sourceTree = "<group>";
 		};
+		69FD12A62A9BCE1200712630 /* SplashScreen */ = {
+			isa = PBXGroup;
+			children = (
+				69FD12A92A9BCE6400712630 /* SplashScreenView.swift */,
+			);
+			path = SplashScreen;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -407,6 +418,7 @@
 				69FD128C2A961A5200712630 /* HotelListFunctions.swift in Sources */,
 				69AAEFDD2A82280D001240BB /* HotelDiscountView.swift in Sources */,
 				69FD12862A9602FD00712630 /* HotelAddressService.swift in Sources */,
+				69FD12AA2A9BCE6400712630 /* SplashScreenView.swift in Sources */,
 				69AAF0212A826332001240BB /* DesinationInfo.swift in Sources */,
 				69AAEFE82A82509E001240BB /* CommonAPIService.swift in Sources */,
 				696F0EE22A8CAC020048C851 /* HotelListViewModel.swift in Sources */,

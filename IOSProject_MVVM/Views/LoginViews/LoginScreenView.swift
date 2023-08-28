@@ -10,35 +10,34 @@ import Combine
 
 struct LoginScreenView: View {
     @StateObject private var loginViewModel: LoginViewModel = LoginViewModel()
+    
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 LoginScreenBackground()
 
                 VStack {
-                    LoginTitle()
 
-                    EmailInputFieldView(loginViewModel: loginViewModel)
+                        LoginTitle()
 
-                    PasswordInputFieldView(loginViewModel: loginViewModel)
+                        EmailInputFieldView(loginViewModel: loginViewModel)
 
-                    ErrorMessageView(loginViewModel: loginViewModel)
+                        PasswordInputFieldView(loginViewModel: loginViewModel)
 
-                    KeepSignedForgotPasswordView(loginViewModel: loginViewModel)
+                        ErrorMessageView(loginViewModel: loginViewModel)
 
-                    LoginButtonView(loginViewModel: loginViewModel)
+                        KeepSignedForgotPasswordView(loginViewModel: loginViewModel)
 
-                    NavigationLink(
-                        destination: LandMarkScreenView(),
-                        isActive: $loginViewModel.isLoggedIn,
-                        label: { EmptyView() }
-                    )
-                    .hidden()
+                        LoginButtonView(loginViewModel: loginViewModel)
+            }
+            .padding()
+            .navigationDestination(isPresented: $loginViewModel.isLoggedIn) {
+                    LandMarkScreenView()
                 }
-                .padding()
             }
         }
+        
     }
 }
 

@@ -37,6 +37,7 @@ struct HotelListScreenView: View {
         .alert(isPresented: $hotelListViewModel.hasError) {
             errorAlert
         }
+//        .navigationBarBackButtonHidden()
     }
 }
 

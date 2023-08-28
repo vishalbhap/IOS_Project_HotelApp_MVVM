@@ -10,16 +10,13 @@ import SwiftUI
 
 struct ContentView: View {
 
-//    @ObservedObject var networkManager = NetworkManager()
+//    @EnvironmentObject var settings: UserSettings
+
 
     var body: some View {
-        LoginScreenView()
-//        LandMarkScreenView()
-//            if networkManager.isConnected {
-//                    HotelListScreenView()
-//            } else {
-//                Text(networkManager.connectionDescription)
-//            }
+
+        SplashView()
+        
     }
 }
 

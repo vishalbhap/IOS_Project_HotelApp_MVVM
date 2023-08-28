@@ -105,7 +105,6 @@ struct KeepSignedForgotPasswordView: View {
     }
 }
 
-
 struct RectangleCheckboxStyle: ToggleStyle {
     func makeBody(configuration: Configuration) -> some View {
         Button(action: { configuration.isOn.toggle() }) {
@@ -114,9 +113,10 @@ struct RectangleCheckboxStyle: ToggleStyle {
                     .frame(width: 18, height: 18)
                     .foregroundColor(configuration.isOn ? Color.blue : Color.gray)
                     .overlay(
-                        SwiftUI.Image(systemName: configuration.isOn ? "checkmark" : "")
+                        SwiftUI.Image(systemName: "checkmark")
                             .foregroundColor(.white)
                             .font(.system(size: 12, weight: .bold))
+                            .opacity(configuration.isOn ? 1 : 0) // Show/hide the checkmark
                     )
 
                 configuration.label

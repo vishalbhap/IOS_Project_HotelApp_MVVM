@@ -8,20 +8,22 @@
 import Foundation
 import SwiftUI
 
-
+@MainActor
 class LoginViewModel: ObservableObject {
     @Published var username = ""
     @Published var password = ""
     @Published var errorMessage = ""
     @Published var isLoggedIn = false
     @Published var keepSignedIn = false
-
+    
     private let loginService = LoginService()
 
     func login() async {
         // Basic input validation
         guard !username.isEmpty else {
-            errorMessage = "Username is required"
+            DispatchQueue.main.async {
+                self.errorMessage = "Username is required"
+            }
             return
         }
 
@@ -39,22 +41,25 @@ class LoginViewModel: ObservableObject {
             errorMessage = "Password must be at least 6 characters long and contain letters, digits, and special characters"
             return
         }
-
-        do {
-            let loginResponseArray = try await loginService.login(username: username, password: password)
-            try authenticateUser(loginModelArray: loginResponseArray)
-            errorMessage = ""
-            isLoggedIn = true
-        } catch {
-            print("Error occured")
-            if let apiError = error as? LoginError {
-                errorMessage = apiError.localizedDescription
-            } else {
-                errorMessage = "An error occurred"
+        
+        Task {
+                do {
+                    let loginResponseArray = try await loginService.login(username: username, password: password)
+                    try authenticateUser(loginModelArray: loginResponseArray)
+                    errorMessage = ""
+                    isLoggedIn = true
+                } catch {
+                    print("Error occurred")
+                    if let apiError = error as? LoginError {
+                        errorMessage = apiError.localizedDescription
+                    } else {
+                        errorMessage = "An error occurred"
+                    }
+                    isLoggedIn = false
+                }
             }
-            isLoggedIn = false
-        }
     }
+
 
     func authenticateUser(loginModelArray: [LoginModel]) throws {
         if username == loginModelArray[0].email && password == loginModelArray[0].password {
@@ -90,5 +95,5 @@ class LoginViewModel: ObservableObject {
             errorMessage = "Password must be at least 6 characters long and contain letters, digits, and special characters"
             return
         }
-    }
+    }    
 }

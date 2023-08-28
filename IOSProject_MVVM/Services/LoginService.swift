@@ -26,11 +26,6 @@ class LoginService {
            let decodedData = try JSONDecoder().decode(LoginsModel.self, from: data)
            let loginDataResponse = decodedData.logins
            return loginDataResponse
-//           if username == loginDataResponse[0].email && password == loginDataResponse[0].password {
-//               return
-//           } else {
-//               throw LoginError.invalidCredentials
-//           }
        } catch {
            throw LoginError.invalidData
        }
