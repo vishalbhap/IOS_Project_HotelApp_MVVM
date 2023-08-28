@@ -15,14 +15,16 @@ struct HotelSearchBar : View {
 
     var body : some View {
         VStack{
-            Text("Explore Your Hotel..!")
-                .foregroundColor(Color.white)
-                .font(Font.custom("PlayfairDisplay-Bold", size: 22))
-                .fontWeight(.bold)
+//            Text("Explore Your Hotel..!")
+//                .foregroundColor(Color.white)
+//                .font(Font.custom("PlayfairDisplay-Bold", size: 22))
+//                .fontWeight(.bold)
             TextField("Search hotels here", text: $searchText)
                 .padding(.leading, 30)
                 .foregroundColor(Color.black)
                 .frame(width: 327,height: 1)
+                .shadow(color: Color.black.opacity(0.06), radius: 5, x: 5, y: 5)
+                .shadow(color: Color.black.opacity(0.06), radius: 5, x: -5, y: -5)
 
                 .padding()
             //  .background(Color(.systemGray5))
@@ -51,7 +53,7 @@ struct HotelSearchBar : View {
                 )
         }
         .padding(.bottom, 20)
-        .background(Color.blue)
+        .background(Color.white)
     }
     
 }

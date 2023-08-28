@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LoginsModel: Decodable {
+struct LoginModelResponse: Decodable {
     let logins: [LoginModel]
 }
 struct LoginModel: Codable, Identifiable{

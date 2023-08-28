@@ -14,6 +14,8 @@ struct ProfileHotel: Identifiable {
 }
 
 struct CountryProfileView: View {
+    @ObservedObject var landMarkViewModel: LandMarkViewModel
+
     let profileHotel: [ProfileHotel] = [
          ProfileHotel(profileName: "london", imageText: "London"),
          ProfileHotel(profileName: "mumbai", imageText: "India"),
@@ -29,7 +31,7 @@ struct CountryProfileView: View {
         ScrollView(.horizontal, showsIndicators: false){
             HStack(spacing: 30){
                 ForEach(profileHotel){profilehotel in
-                    HotelCardView(showHotel : profilehotel)
+                    HotelCardView(showHotel : profilehotel, landMarkViewModel: landMarkViewModel)
                 }
             }
             .padding(20)
@@ -40,6 +42,7 @@ struct CountryProfileView: View {
 
 struct HotelCardView: View {
     let showHotel: ProfileHotel
+    @ObservedObject var landMarkViewModel: LandMarkViewModel
 
     var body: some View {
         VStack {
@@ -53,6 +56,9 @@ struct HotelCardView: View {
                                 .frame(width: 50, height: 50)
                                 .clipShape(Circle())
                                 .overlay(Circle().stroke(Color.gray, lineWidth: 2))
+                                .onTapGesture {
+                                    landMarkViewModel.fetchLandMarks(countryName: showHotel.imageText)
+                                }
                         case .failure(_):
                             Color.gray // Placeholder or error image
                         case .empty:
@@ -69,6 +75,9 @@ struct HotelCardView: View {
                     .frame(width: 50, height: 50)
                     .clipShape(Circle())
                     .overlay(Circle().stroke(Color.gray, lineWidth: 2))
+                    .onTapGesture {
+                        landMarkViewModel.fetchLandMarks(countryName: showHotel.imageText)
+                    }
             } else {
                 Color.gray
             }
@@ -82,6 +91,6 @@ struct HotelCardView: View {
 
 struct CountryProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        CountryProfileView()
+        CountryProfileView(landMarkViewModel: LandMarkViewModel())
     }
 }

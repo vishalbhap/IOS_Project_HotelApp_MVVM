@@ -8,6 +8,7 @@
 import Foundation
 
 class LoginService {
+
     func login(username: String, password: String) async throws -> [LoginModel] {
         guard let url = URL(string: "http://localhost:3000/login") else {
            throw LoginError.invalidURL
@@ -23,15 +24,12 @@ class LoginService {
        }
 
        do {
-           let decodedData = try JSONDecoder().decode(LoginsModel.self, from: data)
-           let loginDataResponse = decodedData.logins
-           return loginDataResponse
+           let decodedData = try JSONDecoder().decode(LoginModelResponse.self, from: data)
+           let loginModelArray = decodedData.logins
+           return loginModelArray
        } catch {
            throw LoginError.invalidData
        }
     }
-
-    func authenticateUser(){
-
-    }
+    
 }

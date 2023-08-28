@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct StaticLandMarkViews: View {
+    @ObservedObject var landMarkViewModel: LandMarkViewModel
     
     var body: some View {
         ScrollView {
             VStack {
-                CountryProfileView()
+                CountryProfileView(landMarkViewModel: landMarkViewModel)
                 Hotel_Insights()
                 HotelDiscountView(hotels: hotels)
                 ReviewGridView(reviews: sampleReviews)
@@ -24,6 +25,6 @@ struct StaticLandMarkViews: View {
 
 struct StaticLandMarkViews_Previews: PreviewProvider {
     static var previews: some View {
-        StaticLandMarkViews()
+        StaticLandMarkViews(landMarkViewModel: LandMarkViewModel())
     }
 }

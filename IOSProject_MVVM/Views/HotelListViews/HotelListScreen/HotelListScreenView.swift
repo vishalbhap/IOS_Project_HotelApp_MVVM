@@ -12,9 +12,13 @@ struct HotelListScreenView: View {
     @State private var selectedSortType: SortType = .RECOMMENDED
     @State var searchText: String = ""
 
+    @ObservedObject var landMarkViewModel: LandMarkViewModel = LandMarkViewModel()
+    @EnvironmentObject var loginViewModel: LoginViewModel
+    @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         VStack {
+
             HotelSearchBar(searchText: $searchText)
             
             SortingButtonView(hotelListViewModel: hotelListViewModel, selectedSortType: $selectedSortType)
@@ -38,6 +42,27 @@ struct HotelListScreenView: View {
             errorAlert
         }
 //        .navigationBarBackButtonHidden()
+        .navigationTitle("Explore your hotel")
+        .navigationBarItems(trailing:
+                Button(action: {
+                    landMarkViewModel.logout()
+                    loginViewModel.isLoggedIn = false
+                }) {
+                    Text("Logout")
+                        .foregroundColor(.red)
+                }
+                    )
+        .navigationBarTitle("", displayMode: .inline) // Clears the navigation title
+        .navigationBarBackButtonHidden(true) // Hides the default back button text
+        .navigationBarItems(leading:
+            Button(action: {
+                presentationMode.wrappedValue.dismiss() // Go back to previous page
+            }) {
+                SwiftUI.Image(systemName: "chevron.left") // Use your back arrow icon here
+                    .foregroundColor(.blue) // Adjust color as needed
+                    .imageScale(.large)
+            }
+        )
     }
 }
 

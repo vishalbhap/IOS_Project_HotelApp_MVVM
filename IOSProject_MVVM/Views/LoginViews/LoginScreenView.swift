@@ -33,6 +33,7 @@ struct LoginScreenView: View {
             .padding()
             .navigationDestination(isPresented: $loginViewModel.isLoggedIn) {
                     LandMarkScreenView()
+                        .environmentObject(loginViewModel)
                 }
             }
         }

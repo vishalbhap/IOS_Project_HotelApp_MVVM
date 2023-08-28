@@ -10,19 +10,23 @@ import SwiftUI
 
 struct LandMarkScreenView: View {
     @ObservedObject var landMarkViewModel: LandMarkViewModel = LandMarkViewModel()
-    
+    @EnvironmentObject var loginViewModel: LoginViewModel
 
     var body: some View {
 //        NavigationView {
             VStack {
+
                 SearchBarView(textInput: $landMarkViewModel.textInputForLocation, searchAction: {
                     landMarkViewModel.fetchLandMarks()
                 })
 
                 switch landMarkViewModel.state {
                     case .success(let landmarks):
-                            LandmarkListView(entities: landmarks)
-                                .navigationBarTitle("Landmarks")
+//                        Text("Showing results for \(landMarkViewModel.textInputForLocation)")
+
+                        LandmarkListView(entities: landmarks)
+                                    .navigationBarTitle("Landmarks")
+                                    .environmentObject(loginViewModel)
 
                     case .dataEmpty:
                         Text("No Data Found for this location")
@@ -37,7 +41,8 @@ struct LandMarkScreenView: View {
                         EmptyView()
                     }
 
-                    if case .success = landMarkViewModel.state { } else { StaticLandMarkViews() }
+                if case .success = landMarkViewModel.state { } else { StaticLandMarkViews( landMarkViewModel: landMarkViewModel) }
+
             }
             .alert("Error", isPresented: $landMarkViewModel.hasError, presenting: landMarkViewModel.state) { detail in
                 Button("Retry") {landMarkViewModel.fetchLandMarks()}
@@ -49,6 +54,15 @@ struct LandMarkScreenView: View {
             }
             .navigationBarBackButtonHidden()
             .navigationTitle("Welcome to Hotels")
+            .navigationBarItems(trailing:
+                    Button(action: {
+                        landMarkViewModel.logout()
+                        loginViewModel.isLoggedIn = false
+                    }) {
+                        Text("Logout")
+                            .foregroundColor(.red)
+                    }
+                )
 //        }
     }
 }

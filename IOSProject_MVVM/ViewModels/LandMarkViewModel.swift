@@ -46,6 +46,37 @@ class LandMarkViewModel: ObservableObject {
             }
         }
     }
+
+
+
+    func logout() {
+            // Implement logout actions here
+            // This might include clearing user data, resetting the login state, etc.
+        }
+
+    func fetchLandMarks(countryName: String) {
+        self.textInputForLocation = countryName
+        if textInputForLocation.isEmpty {
+                    self.state = .noTextInput
+                    return
+                }
+        self.state = .loading
+        self.hasError = false
+        Task {
+            do {
+                let decodedData = try await landMarkService.fetchLandMarksData(location: textInputForLocation)
+                if decodedData.suggestions[0].entities.isEmpty{
+                    self.state = .dataEmpty
+                }else{
+                    self.state = .success(data: decodedData.suggestions[0].entities)
+                }
+                textInputForLocation = ""
+            } catch {
+                self.state = .failed(error: error)
+                self.hasError = true
+            }
+        }
+    }
 }
 
 

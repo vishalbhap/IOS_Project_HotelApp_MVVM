@@ -13,8 +13,6 @@ struct IOSProject_MVVMApp: App {
         var body: some Scene {
             WindowGroup {
                 ContentView()
-                    .environmentObject(UserSettings())
-
             }
         }
 }

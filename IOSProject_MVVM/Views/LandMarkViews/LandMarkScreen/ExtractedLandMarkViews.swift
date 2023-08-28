@@ -27,17 +27,21 @@ struct SearchBarView: View {
             }
             .padding()
         }
+
     }
 }
 
 // List View For Landmarks
 struct LandmarkListView: View {
     var entities: [Entity]
+    @EnvironmentObject var loginViewModel: LoginViewModel
 
     var body: some View {
         List(entities) { landmark in
             NavigationLink {
                 HotelListScreenView(geoId: landmark.geoId)
+                    .environmentObject(loginViewModel)
+                    
             } label: {
                 Text(landmark.name)
                     .foregroundColor(.blue)

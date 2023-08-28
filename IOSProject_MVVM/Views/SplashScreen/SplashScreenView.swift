@@ -15,7 +15,7 @@ struct SplashView: View {
             SwiftUI.Image("splash10") // Replace with your logo image name
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 150, height: 150)
+                .frame(width: 250, height: 250)
                 .padding(.top, 100)
 
             Text("Welcome to HotelApp")

@@ -8,7 +8,7 @@
 import Foundation
 
 struct APIConfig {
-    static let apiKey = "dc1985c65dmsh246f7af80a714d1p126255jsn72836cf8354b"
+    static let apiKey = "7c47b59ebcmsh24a9e90acf6d876p1424c7jsn0d82588a461b"
     static let host = "hotels4.p.rapidapi.com"
 }
 
@@ -36,18 +36,5 @@ class CommonServiceData {
     
 }
 
-class UserSettings: ObservableObject {
-
-    @Published var isLoggedIn: Bool {
-        didSet {
-            UserDefaults.standard.set(isLoggedIn, forKey: "login")
-        }
-    }
-
-    init() {
-        self.isLoggedIn = false
-    }
-
-}
 
 
