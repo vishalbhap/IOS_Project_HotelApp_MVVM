@@ -10,15 +10,11 @@ import SwiftUI
 
 struct ContentView: View {
 
-//    @EnvironmentObject var settings: UserSettings
-
-
     var body: some View {
+
         NavigationStack{
             SplashView()
-//            LandMarkScreenView()
         }
-
         
     }
 }

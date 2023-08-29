@@ -19,7 +19,7 @@ struct CountryProfileView: View {
     let profileHotel: [ProfileHotel] = [
          ProfileHotel(profileName: "london", imageText: "London"),
          ProfileHotel(profileName: "mumbai", imageText: "India"),
-         ProfileHotel(profileName: "newyork", imageText: "New York"),
+         ProfileHotel(profileName: "newyork", imageText: "NewYork"),
          ProfileHotel(profileName: "england", imageText: "England"),
          ProfileHotel(profileName: "australia", imageText: "Australia"),
          ProfileHotel(profileName: "germany", imageText: "Germany"),

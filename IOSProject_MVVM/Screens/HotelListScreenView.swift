@@ -41,7 +41,6 @@ struct HotelListScreenView: View {
         .alert(isPresented: $hotelListViewModel.hasError) {
             errorAlert
         }
-//        .navigationBarBackButtonHidden()
         .navigationTitle("Explore your hotel")
         .navigationBarItems(trailing:
                 Button(action: {

@@ -63,6 +63,15 @@ struct LandMarkScreenView: View {
                             .foregroundColor(.red)
                     }
                 )
+            .navigationBarItems(leading:
+                Button(action: {
+                    landMarkViewModel.state = .none
+                }) {
+                    SwiftUI.Image(systemName: "house.fill") // Use your back arrow icon here
+                        .foregroundColor(.blue) // Adjust color as needed
+                        .imageScale(.large)
+                }
+            )
 //        }
     }
 }
