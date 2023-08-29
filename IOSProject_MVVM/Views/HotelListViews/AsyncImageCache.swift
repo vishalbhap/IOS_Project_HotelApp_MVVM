@@ -37,12 +37,14 @@ struct AsyncImageView: View {
         if let image = imageLoader.imageCache[url] {
             SwiftUI.Image(uiImage: image)
                 .resizable()
-                .frame(width: 350, height: 220)
+                .aspectRatio(contentMode: .fit)
+                .frame(maxWidth: .infinity)
                 .cornerRadius(25)
         } else {
             SwiftUI.Image(systemName: "photo")
                 .resizable()
-                .frame(width: 350, height: 220)
+                .aspectRatio(contentMode: .fit)
+                .frame(maxWidth: .infinity)
                 .cornerRadius(25)
                 .task {
                     await imageLoader.loadImage(from: url)
@@ -50,4 +52,6 @@ struct AsyncImageView: View {
         }
     }
 }
+
+
 
