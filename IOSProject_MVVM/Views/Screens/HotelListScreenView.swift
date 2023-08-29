@@ -21,7 +21,7 @@ struct HotelListScreenView: View {
 
             HotelSearchBar(searchText: $searchText)
             
-            SortingButtonView(hotelListViewModel: hotelListViewModel, selectedSortType: $selectedSortType)
+            SortingButtonView(hotelListViewModel: hotelListViewModel, selectedSortType: $selectedSortType, geoId: geoId!)
 
             List(Array(filteredHotels.enumerated()), id: \.element.id) { index, hotel in
                 HotelListItemView(index: index, hotel: hotel)

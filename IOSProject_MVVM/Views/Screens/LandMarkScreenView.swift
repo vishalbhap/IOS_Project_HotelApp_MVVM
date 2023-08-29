@@ -13,7 +13,7 @@ struct LandMarkScreenView: View {
     @EnvironmentObject var loginViewModel: LoginViewModel
 
     var body: some View {
-//        NavigationView {
+        NavigationView {
             VStack {
 
                 SearchBarView(textInput: $landMarkViewModel.textInputForLocation, searchAction: {
@@ -72,7 +72,7 @@ struct LandMarkScreenView: View {
                         .imageScale(.large)
                 }
             )
-//        }
+        }
     }
 }
 

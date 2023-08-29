@@ -12,12 +12,13 @@ struct SortingButtonView: View {
 
     @ObservedObject var hotelListViewModel:HotelListViewModel
     @Binding var selectedSortType: SortType
+    var geoId: String
 
     @MainActor func applySorting(_ sortType: SortType) {
             hotelListViewModel.hotels = []
             hotelListViewModel.pageIndex = 0
             hotelListViewModel.sortType = sortType
-            hotelListViewModel.fetchHotels(geoId: "1598")
+            hotelListViewModel.fetchHotels(geoId: geoId)
     }
 
     var body: some View {
