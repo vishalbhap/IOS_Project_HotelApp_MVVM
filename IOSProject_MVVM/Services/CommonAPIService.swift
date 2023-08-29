@@ -8,7 +8,7 @@
 import Foundation
 
 struct APIConfig {
-    static let apiKey = "7c47b59ebcmsh24a9e90acf6d876p1424c7jsn0d82588a461b"
+    static let apiKey = "1f5cefeaabmsh07632163df82112p10c22djsn1a0e5361ca8c"
     static let host = "hotels4.p.rapidapi.com"
 }
 

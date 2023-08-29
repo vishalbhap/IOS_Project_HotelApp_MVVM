@@ -16,8 +16,9 @@ struct LandMarkScreenView: View {
         NavigationView {
             VStack {
 
-                SearchBarView(textInput: $landMarkViewModel.textInputForLocation, searchAction: {
-                    landMarkViewModel.fetchLandMarks()
+                SearchBarView(
+                    textInput: $landMarkViewModel.textInputForLocation,
+                    searchAction: {landMarkViewModel.fetchLandMarks()
                 })
 
                 switch landMarkViewModel.state {
@@ -33,6 +34,7 @@ struct LandMarkScreenView: View {
 
                     case .loading:
                         ProgressView()
+                        Text("Fetching lamdmarks...")
 
                     case .noTextInput:
                         Text("Enter some location")

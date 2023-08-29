@@ -33,6 +33,7 @@ struct HotelListScreenView: View {
             }
             if case .loading = hotelListViewModel.state {
                 ProgressView()
+                Text("Fetching Hotels")
             }
         }
         .onAppear {
