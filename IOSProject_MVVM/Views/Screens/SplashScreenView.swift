@@ -12,16 +12,14 @@ struct SplashView: View {
 
     var body: some View {
         VStack {
-            SwiftUI.Image("splash10") // Replace with your logo image name
+            SwiftUI.Image("SplashScreen") // Replace with your logo image name
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(width: 250, height: 250)
-                .padding(.top, 100)
 
-            Text("Welcome to HotelApp")
+            Text("Welcome to Atlas Hotels")
                 .font(.headline)
                 .foregroundColor(.primary)
-                .padding(.top, 20)
 
             Text("Your favourite place to book hotel online ends here")
                 .font(.subheadline)
