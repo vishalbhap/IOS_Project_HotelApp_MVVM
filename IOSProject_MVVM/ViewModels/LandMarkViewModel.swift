@@ -22,6 +22,7 @@ class LandMarkViewModel: ObservableObject {
     @Published var state: State = .none
     @Published var hasError: Bool = false
     @Published var textInputForLocation: String = ""
+    @Published var placeName: String = ""
     private let landMarkService = LandMarkService()
 
     func fetchLandMarks() {
@@ -38,6 +39,7 @@ class LandMarkViewModel: ObservableObject {
                     self.state = .dataEmpty
                 }else{
                     self.state = .success(data: decodedData.suggestions[0].entities)
+                    self.placeName = decodedData.term
                 }
                 textInputForLocation = ""
             } catch {
@@ -48,23 +50,23 @@ class LandMarkViewModel: ObservableObject {
     }
 
 
-
     func logout() {
             // Implement logout actions here
             // This might include clearing user data, resetting the login state, etc.
         }
 
-    func fetchLandMarks(countryName: String) {
+    func fetchLandMarks(locationInputValue: String) {
         self.state = .loading
         self.hasError = false
         Task {
             do {
-                let decodedData = try await landMarkService.fetchLandMarksData(location: countryName)
+                let decodedData = try await landMarkService.fetchLandMarksData(location: locationInputValue)
                 if decodedData.suggestions[0].entities.isEmpty{
                     self.state = .dataEmpty
                 }else{
                     self.state = .success(data: decodedData.suggestions[0].entities)
-                    self.textInputForLocation = countryName
+                    self.textInputForLocation = locationInputValue
+                    self.placeName = decodedData.term
                 }
                 textInputForLocation = ""
             } catch {

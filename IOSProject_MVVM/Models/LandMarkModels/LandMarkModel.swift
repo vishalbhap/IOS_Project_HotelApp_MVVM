@@ -8,10 +8,12 @@
 import Foundation
 
 struct LandMarkModelResponse : Codable {
+    let term: String
     let suggestions : [Suggestion]
 
     enum CodingKeys: String, CodingKey {
         case suggestions = "suggestions"
+        case term = "term"
     }
 }
 

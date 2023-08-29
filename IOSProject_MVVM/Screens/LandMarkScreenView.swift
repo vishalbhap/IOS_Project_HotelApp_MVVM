@@ -22,7 +22,7 @@ struct LandMarkScreenView: View {
 
                 switch landMarkViewModel.state {
                     case .success(let landmarks):
-//                        Text("Showing results for \(landMarkViewModel.textInputForLocation)")
+                    Text("Showing results for \(landMarkViewModel.placeName)")
 
                         LandmarkListView(entities: landmarks)
                                     .navigationBarTitle("Landmarks")
