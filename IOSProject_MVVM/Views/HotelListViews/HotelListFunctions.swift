@@ -46,5 +46,26 @@ extension HotelListScreenView {
         )
     }
 
+    var BackButton: some View {
+        Button(action: {
+            presentationMode.wrappedValue.dismiss() // Go back to previous page
+        }) {
+            SwiftUI.Image(systemName: "chevron.left") // Use your back arrow icon here
+                .foregroundColor(.blue) // Adjust color as needed
+                .imageScale(.large)
+        }
+    }
+
+    var LogoutButton: some View {
+        Button(action: {
+            landMarkViewModel.logout()
+            loginViewModel.isLoggedIn = false
+        }) {
+            Text("Logout")
+                .foregroundColor(.red)
+        }
+    }
+    
+
     
 }

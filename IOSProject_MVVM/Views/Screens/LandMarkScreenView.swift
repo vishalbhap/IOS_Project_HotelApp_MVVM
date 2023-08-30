@@ -15,7 +15,6 @@ struct LandMarkScreenView: View {
     var body: some View {
 //        NavigationView {
             VStack {
-
                 SearchBarView(
                     textInput: $landMarkViewModel.textInputForLocation,
                     searchAction: {landMarkViewModel.fetchLandMarks()
