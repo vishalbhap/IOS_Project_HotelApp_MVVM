@@ -48,8 +48,6 @@ struct HotelSearchBar : View {
                         }
                     }
                         .padding(.horizontal, 32)
-
-
                 )
         }
         .padding(.bottom, 20)

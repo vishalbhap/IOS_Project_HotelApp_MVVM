@@ -9,24 +9,19 @@ import SwiftUI
 struct HotelListScreenView: View {
     var geoId: String?
     @ObservedObject var hotelListViewModel = HotelListViewModel()
-    @State private var selectedSortType: SortType = .RECOMMENDED
-    @State var searchText: String = ""
     @ObservedObject var landMarkViewModel: LandMarkViewModel = LandMarkViewModel()
     @EnvironmentObject var loginViewModel: LoginViewModel
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         VStack {
-            HotelSearchBar(searchText: $searchText)
+            HotelSearchBar(searchText: $hotelListViewModel.searchText)
             
-            SortingButtonView(hotelListViewModel: hotelListViewModel, selectedSortType: $selectedSortType, geoId: geoId!)
+            SortedButtons
 
             HotelListView
-            
-            if case .loading = hotelListViewModel.state {
-                ProgressView()
-                Text("Fetching Hotels")
-            }
+
+            HotelProgessView
         }
         .onAppear {
             fetchHotels()
@@ -36,7 +31,7 @@ struct HotelListScreenView: View {
         }
         .navigationTitle("Explore your hotel")
         .navigationBarBackButtonHidden(true)
-        .navigationBarItems(trailing:LogoutButton )
+        .navigationBarItems(trailing: LogoutButton )
         .navigationBarItems(leading: BackButton )
     }
 }

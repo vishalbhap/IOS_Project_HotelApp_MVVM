@@ -25,9 +25,9 @@ extension HotelListScreenView {
     }
 
     var filteredHotels: [HotelModel] {
-        if searchText.count >= 3 {
+        if hotelListViewModel.searchText.count >= 3 {
             return hotelListViewModel.hotels.filter { hotel in
-                let searchTextLowercased = searchText.lowercased()
+                let searchTextLowercased = hotelListViewModel.searchText.lowercased()
                 let nameContainsSearchText = hotel.name.lowercased().contains(searchTextLowercased)
                 let addressContainsSearchText = hotel.address.lowercased().contains(searchTextLowercased)
                 return nameContainsSearchText || addressContainsSearchText
@@ -75,5 +75,18 @@ extension HotelListScreenView {
                     }
                 }
         }
-    }  
+    }
+
+    var SortedButtons: some View {
+        SortingButtonView(hotelListViewModel: hotelListViewModel, selectedSortType: $hotelListViewModel.sortType, geoId: geoId!)
+    }
+
+    var HotelProgessView: some View {
+        VStack{
+            if case .loading = hotelListViewModel.state {
+                ProgressView()
+                Text("Fetching Hotels")
+            }
+        }
+    }
 }

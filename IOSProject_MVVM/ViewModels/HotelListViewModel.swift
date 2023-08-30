@@ -17,6 +17,7 @@ import SwiftUI
 class HotelListViewModel: ObservableObject {
 
     @Published var sortType: SortType = .RECOMMENDED
+    @Published var searchText: String = ""
 
     @Published var state: State = .none
     @Published var hasError: Bool = false
