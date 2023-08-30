@@ -10,10 +10,14 @@ import SwiftUI
 
 struct LoginTitle: View {
     var body: some View {
+        SwiftUI.Image("SplashScreen") // Replace with your logo image name
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 250, height: 250)
+
         Text("Login")
-            .font(.largeTitle)
-            .bold()
-            .padding()
+            .font(.system(size: 34, weight: .bold, design: .default))
+            .foregroundColor(.blue)
     }
 }
 
@@ -22,45 +26,80 @@ struct EmailInputFieldView: View {
     @StateObject var loginViewModel: LoginViewModel
 
     var body: some View {
-        TextField("Username", text: $loginViewModel.username)
-            .padding()
-            .autocapitalization(.none)
-            .disableAutocorrection(true)
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .onTapGesture {
-                loginViewModel.errorMessage = ""
+        VStack {
+            HStack {
+                SwiftUI.Image(systemName: "envelope")
+                    .foregroundColor(.black)
+                    .padding(.leading, 10)
+
+                TextField("Email", text: $loginViewModel.username)
+                    .autocapitalization(.none)
+                    .disableAutocorrection(true)
+                    .padding(.horizontal) // Add horizontal padding to the TextField
+                    .onTapGesture {
+                        loginViewModel.errorMessage = ""
+                    }
+
             }
-            .overlay(
-                HStack {
-                    SwiftUI.Image(systemName: "person")
-                        .foregroundColor(.black)
-                        .padding(.leading, -5)
-                    Spacer()
-                }
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.white)
+                    .shadow(color: Color.gray.opacity(0.3), radius: 5, x: 0, y: 2)
             )
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.black, lineWidth: 1) // Add black border
+            )
+        }
     }
 }
 
 struct PasswordInputFieldView: View {
     @StateObject var loginViewModel: LoginViewModel
+    @State private var isPasswordVisible = false
 
     var body: some View {
-        SecureField("Password", text: $loginViewModel.password)
-            .padding()
-            .textFieldStyle(RoundedBorderTextFieldStyle())
-            .onTapGesture {
-                loginViewModel.errorMessage = ""
-            }
-            .overlay(
-                HStack {
-                    SwiftUI.Image(systemName: "lock")
-                        .foregroundColor(.black)
-                        .padding(.leading, -5)
-                    Spacer()
+        VStack {
+            HStack {
+                SwiftUI.Image(systemName: "lock")
+                    .foregroundColor(.black)
+                    .padding(.leading, 10)
+
+                if isPasswordVisible {
+                    TextField("Password", text: $loginViewModel.password)
+                        .onTapGesture {
+                            loginViewModel.errorMessage = ""
+                        }
+                } else {
+                    SecureField("Password", text: $loginViewModel.password)
+                        .onTapGesture {
+                            loginViewModel.errorMessage = ""
+                        }
+                        
                 }
+
+                Button(action: {
+                    isPasswordVisible.toggle()
+                }) {
+                    SwiftUI.Image(systemName: isPasswordVisible ? "eye.slash.fill" : "eye.fill")
+                        .foregroundColor(.gray)
+                }
+            }
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .fill(Color.white)
+                    .shadow(color: Color.gray.opacity(0.3), radius: 5, x: 0, y: 2)
             )
+            .overlay(
+                RoundedRectangle(cornerRadius: 10)
+                    .stroke(Color.black, lineWidth: 1) // Add black border
+            )
+        }
     }
 }
+
 
 struct ErrorMessageView: View {
     @StateObject var loginViewModel: LoginViewModel
@@ -76,19 +115,27 @@ struct LoginButtonView: View {
     @StateObject var loginViewModel: LoginViewModel
 
     var body: some View {
-        Button("Login") {
+        Button(action: {
             Task {
                 await loginViewModel.login()
             }
+        }) {
+            Text("Login")
+                .fontWeight(.bold)
+                .foregroundColor(.white)
+                .padding()
+                .frame(maxWidth: .infinity)
+                .background(Color.blue).opacity(0.8)
+                .cornerRadius(10)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 10)
+                        .stroke(Color.blue, lineWidth: 2)
+                )
+                .padding([.horizontal, .bottom], 20)
         }
-        .padding()
-        .frame(width: 200, height: 40)
-        .foregroundColor(.white)
-        .background(.blue)
-        .cornerRadius(10)
-        .padding(20)
-        .transition(AnyTransition.opacity.animation(.easeIn))
         .disabled(loginViewModel.isLoggedIn)
+        .opacity(loginViewModel.isLoggedIn ? 0.6 : 1)
+        .animation(.easeInOut)
     }
 }
 

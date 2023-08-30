@@ -17,7 +17,7 @@ struct LoginScreenView: View {
             ZStack {
                 LoginScreenBackground()
 
-                VStack {
+                VStack(spacing: 20) {
                         LoginTitle()
 
                         EmailInputFieldView(loginViewModel: loginViewModel)
