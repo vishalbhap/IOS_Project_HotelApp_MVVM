@@ -8,6 +8,29 @@
 import Foundation
 import SwiftUI
 
+extension LandMarkScreenView {
+    var HomeButton: some View {
+        Button(action: {
+            landMarkViewModel.state = .none
+        }) {
+            SwiftUI.Image(systemName: "house.fill") // Use your back arrow icon here
+                .foregroundColor(.blue) // Adjust color as needed
+                .imageScale(.large)
+        }
+    }
+
+    var LogoutButton: some View {
+        Button(action: {
+            landMarkViewModel.logout()
+            loginViewModel.isLoggedIn = false
+        }) {
+            Text("Logout")
+                .foregroundColor(.red)
+        }
+    }
+}
+
+
 // Search Bar View with Button action
 struct SearchBarView: View {
     @Binding var textInput: String
@@ -35,8 +58,11 @@ struct SearchBarView: View {
 struct LandmarkListView: View {
     var entities: [Entity]
     @EnvironmentObject var loginViewModel: LoginViewModel
+    @ObservedObject var landMarkViewModel: LandMarkViewModel
 
     var body: some View {
+        Text("Showing results for \(landMarkViewModel.placeName)")
+        
         List(entities) { landmark in
             NavigationLink {
                 HotelListScreenView(geoId: landmark.geoId)

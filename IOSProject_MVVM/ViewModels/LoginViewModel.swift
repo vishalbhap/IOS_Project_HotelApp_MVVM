@@ -10,8 +10,8 @@ import SwiftUI
 
 @MainActor
 class LoginViewModel: ObservableObject {
-    @Published var username = ""
-    @Published var password = ""
+    @Published var username = "john@gmail.com"
+    @Published var password = "Cybage@123"
     @Published var errorMessage = ""
     @Published var isLoggedIn = false
     @Published var keepSignedIn = false

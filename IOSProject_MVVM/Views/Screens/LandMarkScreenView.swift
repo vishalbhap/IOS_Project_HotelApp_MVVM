@@ -23,9 +23,7 @@ struct LandMarkScreenView: View {
 
                 switch landMarkViewModel.state {
                     case .success(let landmarks):
-                    Text("Showing results for \(landMarkViewModel.placeName)")
-
-                        LandmarkListView(entities: landmarks)
+                    LandmarkListView(entities: landmarks, landMarkViewModel: landMarkViewModel)
                                     .navigationBarTitle("Landmarks")
                                     .environmentObject(loginViewModel)
 
@@ -56,33 +54,23 @@ struct LandMarkScreenView: View {
             }
             .navigationBarBackButtonHidden()
             .navigationTitle("Welcome to Hotels")
-            .navigationBarItems(trailing:
-                    Button(action: {
-                        landMarkViewModel.logout()
-                        loginViewModel.isLoggedIn = false
-                    }) {
-                        Text("Logout")
-                            .foregroundColor(.red)
-                    }
-                )
-            .navigationBarItems(leading:
-                Button(action: {
-                    landMarkViewModel.state = .none
-                }) {
-                    SwiftUI.Image(systemName: "house.fill") // Use your back arrow icon here
-                        .foregroundColor(.blue) // Adjust color as needed
-                        .imageScale(.large)
-                }
-            )
+            .navigationBarItems(trailing: LogoutButton )
+            .navigationBarItems(leading: HomeButton )
 //        }
     }
+
 }
 
 struct LandMarkScreenView_Previews: PreviewProvider {
     static var previews: some View {
-//        LandMarkScreenView()
         LandMarkScreenView()
                     .environmentObject(LoginViewModel())
     }
 }
+
+
+
+
+
+
 
