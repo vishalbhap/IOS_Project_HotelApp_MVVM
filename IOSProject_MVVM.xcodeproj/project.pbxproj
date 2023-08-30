@@ -50,7 +50,6 @@
 		69FD129A2A98A00B00712630 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD12992A98A00B00712630 /* LoginViewModel.swift */; };
 		69FD129D2A98A06100712630 /* LoginScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD129C2A98A06100712630 /* LoginScreenView.swift */; };
 		69FD129F2A98A13D00712630 /* loginJson.json in Resources */ = {isa = PBXBuildFile; fileRef = 69FD129E2A98A13D00712630 /* loginJson.json */; };
-		69FD12A12A98A66400712630 /* LoginScreenBackround.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD12A02A98A66400712630 /* LoginScreenBackround.swift */; };
 		69FD12A32A98A6CF00712630 /* LoginSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD12A22A98A6CF00712630 /* LoginSubViews.swift */; };
 		69FD12A52A98B18F00712630 /* LoginError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD12A42A98B18F00712630 /* LoginError.swift */; };
 		69FD12AA2A9BCE6400712630 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FD12A92A9BCE6400712630 /* SplashScreenView.swift */; };
@@ -101,7 +100,6 @@
 		69FD12992A98A00B00712630 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		69FD129C2A98A06100712630 /* LoginScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenView.swift; sourceTree = "<group>"; };
 		69FD129E2A98A13D00712630 /* loginJson.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loginJson.json; sourceTree = "<group>"; };
-		69FD12A02A98A66400712630 /* LoginScreenBackround.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginScreenBackround.swift; sourceTree = "<group>"; };
 		69FD12A22A98A6CF00712630 /* LoginSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginSubViews.swift; sourceTree = "<group>"; };
 		69FD12A42A98B18F00712630 /* LoginError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginError.swift; sourceTree = "<group>"; };
 		69FD12A92A9BCE6400712630 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
@@ -291,7 +289,6 @@
 		69FD129B2A98A03100712630 /* LoginViews */ = {
 			isa = PBXGroup;
 			children = (
-				69FD12A02A98A66400712630 /* LoginScreenBackround.swift */,
 				69FD12A22A98A6CF00712630 /* LoginSubViews.swift */,
 			);
 			path = LoginViews;
@@ -401,7 +398,6 @@
 				696F0E862A8603CC0048C851 /* InternetError.swift in Sources */,
 				69AAF0232A826332001240BB /* Properties.swift in Sources */,
 				69FD129D2A98A06100712630 /* LoginScreenView.swift in Sources */,
-				69FD12A12A98A66400712630 /* LoginScreenBackround.swift in Sources */,
 				69FD12982A989FC000712630 /* LoginService.swift in Sources */,
 				69AAEFD82A82280D001240BB /* ReviewByCustomer.swift in Sources */,
 				69AAF0222A826332001240BB /* Reviews.swift in Sources */,

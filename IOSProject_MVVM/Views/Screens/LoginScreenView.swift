@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import Combine
 
 struct LoginScreenView: View {
     @StateObject private var loginViewModel: LoginViewModel = LoginViewModel()
@@ -37,8 +36,7 @@ struct LoginScreenView: View {
                         .environmentObject(loginViewModel)
                 }
             }
-        }
-        
+        }        
     }
 }
 

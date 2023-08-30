@@ -8,6 +8,17 @@
 import Foundation
 import SwiftUI
 
+struct LoginScreenBackground: View {
+    var body: some View {
+        LinearGradient(
+            gradient: Gradient(colors: [Color("PrimaryBlue"), Color("SecondaryTeal")]),
+            startPoint: .top,
+            endPoint: .bottom
+        )
+        .ignoresSafeArea()
+    }
+}
+
 struct LoginTitle: View {
     var body: some View {
         VStack {
@@ -126,7 +137,7 @@ struct LoginButtonView: View {
                 .foregroundColor(.white)
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(Color.blue).opacity(0.8)
+                .background(Color.blue.opacity(0.8))
                 .cornerRadius(10)
                 .overlay(
                     RoundedRectangle(cornerRadius: 10)
@@ -136,7 +147,11 @@ struct LoginButtonView: View {
         }
         .disabled(loginViewModel.isLoggedIn)
         .opacity(loginViewModel.isLoggedIn ? 0.6 : 1)
-        .animation(.easeInOut)
+        .onTapGesture {
+            withAnimation(.easeInOut) { 
+
+            }
+        }
     }
 }
 
