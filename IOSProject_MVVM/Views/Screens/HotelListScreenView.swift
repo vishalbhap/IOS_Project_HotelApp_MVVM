@@ -21,14 +21,8 @@ struct HotelListScreenView: View {
             
             SortingButtonView(hotelListViewModel: hotelListViewModel, selectedSortType: $selectedSortType, geoId: geoId!)
 
-            List(Array(filteredHotels.enumerated()), id: \.element.id) { index, hotel in
-                HotelListItemView(index: index, hotel: hotel)
-                    .onAppear {
-                        if hotel.id == hotelListViewModel.hotels.last?.id {
-                            paginateHotels()
-                        }
-                    }
-            }
+            HotelListView
+            
             if case .loading = hotelListViewModel.state {
                 ProgressView()
                 Text("Fetching Hotels")
@@ -41,7 +35,6 @@ struct HotelListScreenView: View {
             errorAlert
         }
         .navigationTitle("Explore your hotel")
-        .navigationBarTitle("", displayMode: .inline)
         .navigationBarBackButtonHidden(true)
         .navigationBarItems(trailing:LogoutButton )
         .navigationBarItems(leading: BackButton )

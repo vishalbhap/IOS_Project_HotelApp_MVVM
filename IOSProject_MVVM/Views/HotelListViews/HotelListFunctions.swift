@@ -65,7 +65,15 @@ extension HotelListScreenView {
                 .foregroundColor(.red)
         }
     }
-    
 
-    
+    var HotelListView: some View {
+        List(Array(filteredHotels.enumerated()), id: \.element.id) { index, hotel in
+            HotelListItemView(index: index, hotel: hotel)
+                .onAppear {
+                    if hotel.id == hotelListViewModel.hotels.last?.id {
+                        paginateHotels()
+                    }
+                }
+        }
+    }  
 }
