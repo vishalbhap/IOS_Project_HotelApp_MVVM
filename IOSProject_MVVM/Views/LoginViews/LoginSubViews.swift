@@ -10,17 +10,19 @@ import SwiftUI
 
 struct LoginTitle: View {
     var body: some View {
-        SwiftUI.Image("SplashScreen") // Replace with your logo image name
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 250, height: 250)
+        VStack {
+            SwiftUI.Image("SplashScreen")
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .padding(.vertical) 
 
-        Text("Login")
-            .font(.system(size: 34, weight: .bold, design: .default))
-            .foregroundColor(.blue)
+            Text("Login")
+                .font(.system(size: 34, weight: .bold, design: .default))
+                .foregroundColor(.blue)
+        }
+        .padding(.vertical) // Center content vertically
     }
 }
-
 
 struct EmailInputFieldView: View {
     @StateObject var loginViewModel: LoginViewModel
@@ -30,16 +32,15 @@ struct EmailInputFieldView: View {
             HStack {
                 SwiftUI.Image(systemName: "envelope")
                     .foregroundColor(.black)
-                    .padding(.leading, 10)
+                    .padding(.leading, 10) // Keep the same leading padding for both images
 
                 TextField("Email", text: $loginViewModel.username)
                     .autocapitalization(.none)
                     .disableAutocorrection(true)
-                    .padding(.horizontal) // Add horizontal padding to the TextField
+                    .padding(.horizontal)
                     .onTapGesture {
                         loginViewModel.errorMessage = ""
                     }
-
             }
             .padding()
             .background(
@@ -49,7 +50,7 @@ struct EmailInputFieldView: View {
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.black, lineWidth: 1) // Add black border
+                    .stroke(Color.black, lineWidth: 1)
             )
         }
     }
@@ -64,7 +65,7 @@ struct PasswordInputFieldView: View {
             HStack {
                 SwiftUI.Image(systemName: "lock")
                     .foregroundColor(.black)
-                    .padding(.leading, 10)
+                    .padding(.leading, 10) // Keep the same leading padding for both images
 
                 if isPasswordVisible {
                     TextField("Password", text: $loginViewModel.password)
@@ -76,7 +77,6 @@ struct PasswordInputFieldView: View {
                         .onTapGesture {
                             loginViewModel.errorMessage = ""
                         }
-                        
                 }
 
                 Button(action: {
@@ -94,11 +94,12 @@ struct PasswordInputFieldView: View {
             )
             .overlay(
                 RoundedRectangle(cornerRadius: 10)
-                    .stroke(Color.black, lineWidth: 1) // Add black border
+                    .stroke(Color.black, lineWidth: 1)
             )
         }
     }
 }
+
 
 
 struct ErrorMessageView: View {
@@ -164,7 +165,7 @@ struct RectangleCheckboxStyle: ToggleStyle {
                         SwiftUI.Image(systemName: "checkmark")
                             .foregroundColor(.white)
                             .font(.system(size: 12, weight: .bold))
-                            .opacity(configuration.isOn ? 1 : 0) // Show/hide the checkmark
+                            .opacity(configuration.isOn ? 1 : 0)
                     )
 
                 configuration.label
