@@ -10,15 +10,6 @@ import Foundation
 @MainActor
 class LandMarkViewModel: ObservableObject {
 
-    enum State {
-        case none
-        case loading
-        case success(data: [Entity])
-        case failed(error: Error)
-        case noTextInput
-        case dataEmpty
-    }
-
     @Published var state: State = .none
     @Published var hasError: Bool = false
     @Published var textInputForLocation: String = ""
@@ -26,10 +17,10 @@ class LandMarkViewModel: ObservableObject {
     private let landMarkService = LandMarkService()
 
     func fetchLandMarks() {
-        if textInputForLocation.isEmpty {
-                    self.state = .noTextInput
-                    return
-                }
+        guard !textInputForLocation.isEmpty else {
+            self.state = .noTextInput
+            return
+        }
         self.state = .loading
         self.hasError = false
         Task {
@@ -72,6 +63,28 @@ class LandMarkViewModel: ObservableObject {
             } catch {
                 self.state = .failed(error: error)
                 self.hasError = true
+            }
+        }
+    }
+
+
+
+    enum State {
+        case none
+        case loading
+        case success(data: [Entity])
+        case failed(error: Error)
+        case noTextInput
+        case dataEmpty
+
+        var localizedDescription: String {
+            switch self {
+            case .none: return "No state"
+            case .loading: return "Loading"
+            case .success: return "Success"
+            case .failed(let error): return error.localizedDescription
+            case .noTextInput: return "No input"
+            case .dataEmpty: return "No Data available"
             }
         }
     }

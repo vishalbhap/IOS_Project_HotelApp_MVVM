@@ -41,16 +41,13 @@ struct LandMarkScreenView: View {
                         EmptyView()
                     }
 
-                if case .success = landMarkViewModel.state { } else { StaticLandMarkViews( landMarkViewModel: landMarkViewModel) }
-
-            }
-            .alert("Error", isPresented: $landMarkViewModel.hasError, presenting: landMarkViewModel.state) { detail in
-                Button("Retry") {landMarkViewModel.fetchLandMarks()}
-                Button("Cancel", role: .cancel) {}
-            } message: { detail in
-                if case let .failed(error) = detail {
-                    Text(error.localizedDescription)
+                if case .success = landMarkViewModel.state { }
+                else {
+                    StaticLandMarkViews( landMarkViewModel: landMarkViewModel)
                 }
+            }
+            .alert(isPresented: $landMarkViewModel.hasError) {
+                errorAlert
             }
             .navigationBarBackButtonHidden()
             .navigationTitle("Welcome to Hotels")
@@ -58,7 +55,6 @@ struct LandMarkScreenView: View {
             .navigationBarItems(leading: HomeButton )
 //        }
     }
-
 }
 
 struct LandMarkScreenView_Previews: PreviewProvider {
