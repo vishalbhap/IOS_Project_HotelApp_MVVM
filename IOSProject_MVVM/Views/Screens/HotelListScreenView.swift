@@ -17,7 +17,7 @@ struct HotelListScreenView: View {
         VStack {
             HotelSearchBar(searchText: $hotelListViewModel.searchText)
             
-            SortedButtons
+            SortedButtonsView
 
             HotelListView
 

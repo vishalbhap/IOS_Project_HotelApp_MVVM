@@ -77,7 +77,7 @@ extension HotelListScreenView {
         }
     }
 
-    var SortedButtons: some View {
+    var SortedButtonsView: some View {
         SortingButtonView(hotelListViewModel: hotelListViewModel, selectedSortType: $hotelListViewModel.sortType, geoId: geoId!)
     }
 

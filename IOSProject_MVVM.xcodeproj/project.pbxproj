@@ -119,11 +119,11 @@
 		696F0E822A86003F0048C851 /* ErrorHandlers */ = {
 			isa = PBXGroup;
 			children = (
-				696F0E832A86006C0048C851 /* LandMarkError.swift */,
-				696F0E852A8603CC0048C851 /* InternetError.swift */,
-				696F0E892A8613310048C851 /* CommonErrors.swift */,
-				696F0EE52A8CACAF0048C851 /* HotelListError.swift */,
 				69FD12A42A98B18F00712630 /* LoginError.swift */,
+				696F0E832A86006C0048C851 /* LandMarkError.swift */,
+				696F0EE52A8CACAF0048C851 /* HotelListError.swift */,
+				696F0E892A8613310048C851 /* CommonErrors.swift */,
+				696F0E852A8603CC0048C851 /* InternetError.swift */,
 			);
 			path = ErrorHandlers;
 			sourceTree = "<group>";
@@ -184,8 +184,8 @@
 			isa = PBXGroup;
 			children = (
 				69FD12942A989F1E00712630 /* LoginModels */,
-				69AAEFEE2A8259A2001240BB /* HotelModels */,
 				69AAEFEC2A82598F001240BB /* LandMarkModels */,
+				69AAEFEE2A8259A2001240BB /* HotelModels */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -195,8 +195,8 @@
 			children = (
 				69FD12BC2A9CDA5600712630 /* Screens */,
 				69FD129B2A98A03100712630 /* LoginViews */,
-				696F0EDD2A8CA6150048C851 /* HotelListViews */,
 				69AAEFC02A8211D7001240BB /* LandMarkViews */,
+				696F0EDD2A8CA6150048C851 /* HotelListViews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -204,9 +204,9 @@
 		69AAEFB82A8205C7001240BB /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				69FD12992A98A00B00712630 /* LoginViewModel.swift */,
 				69AAEFBE2A820E96001240BB /* LandMarkViewModel.swift */,
 				696F0EE12A8CAC020048C851 /* HotelListViewModel.swift */,
-				69FD12992A98A00B00712630 /* LoginViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -214,11 +214,11 @@
 		69AAEFBB2A82062A001240BB /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				69FD12972A989FC000712630 /* LoginService.swift */,
 				69AAEFE52A824DE3001240BB /* LandMarkService.swift */,
-				69AAEFE72A82509E001240BB /* CommonAPIService.swift */,
 				696F0EE32A8CAC750048C851 /* HotelListService.swift */,
 				69FD12852A9602FD00712630 /* HotelAddressService.swift */,
-				69FD12972A989FC000712630 /* LoginService.swift */,
+				69AAEFE72A82509E001240BB /* CommonAPIService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
