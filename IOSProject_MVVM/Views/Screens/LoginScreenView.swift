@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LoginScreenView: View {
-    @StateObject private var loginViewModel: LoginViewModel = LoginViewModel()
+    @StateObject var loginViewModel: LoginViewModel = LoginViewModel()
     
 
     var body: some View {
@@ -39,7 +39,6 @@ struct LoginScreenView: View {
         }        
     }
 }
-
 
 struct LoginScreenView_Previews: PreviewProvider {
     static var previews: some View {

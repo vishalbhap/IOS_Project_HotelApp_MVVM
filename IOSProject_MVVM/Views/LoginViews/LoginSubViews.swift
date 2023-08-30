@@ -5,7 +5,6 @@
 //  Created by Vishal Bhapkar on 25/08/23.
 //
 
-import Foundation
 import SwiftUI
 
 struct LoginScreenBackground: View {

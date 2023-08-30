@@ -18,57 +18,76 @@ class LoginViewModel: ObservableObject {
     
     private let loginService = LoginService()
 
+
+
+
+    // Calling service functionality
     func login() async {
-        // Basic input validation
-        guard !username.isEmpty else {
-            DispatchQueue.main.async {
-                self.errorMessage = "Username is required"
-            }
+        guard validateInput() else {
             return
+        }
+        
+        do {
+            let loginResponseArray = try await loginService.login(username: username, password: password)
+            try authenticateUser(loginModelArray: loginResponseArray)
+            errorMessage = ""
+            isLoggedIn = true
+        } catch {
+            handleLoginError(error)
+        }
+    }
+
+
+
+    
+
+    // validate all input validations
+    func validateInput() -> Bool {
+        guard !username.isEmpty else {
+            errorMessage = "Username is required"
+            return false
         }
 
         guard !password.isEmpty else {
             errorMessage = "Password is required"
-            return
+            return false
         }
 
         if !isValidEmail(username) {
             errorMessage = "Invalid email format"
-            return
+            return false
         }
 
         if !isValidPassword(password) {
             errorMessage = "Password must be at least 6 characters long and contain letters, digits, and special characters"
-            return
+            return false
         }
-        
-        Task {
-                do {
-                    let loginResponseArray = try await loginService.login(username: username, password: password)
-                    try authenticateUser(loginModelArray: loginResponseArray)
-                    errorMessage = ""
-                    isLoggedIn = true
-                } catch {
-                    print("Error occurred")
-                    if let apiError = error as? LoginError {
-                        errorMessage = apiError.localizedDescription
-                    } else {
-                        errorMessage = "An error occurred"
-                    }
-                    isLoggedIn = false
-                }
-            }
+
+        return true
     }
 
 
+    // authenticate credentials to login successfully
     func authenticateUser(loginModelArray: [LoginModel]) throws {
-        if username == loginModelArray[0].email && password == loginModelArray[0].password {
-            username = ""
-            password = ""
-            return
-        } else {
+        guard username == loginModelArray[0].email && password == loginModelArray[0].password else {
             throw LoginError.invalidCredentials
         }
+        clearCredentials()
+    }
+
+    func handleLoginError(_ error: Error) {
+        if let apiError = error as? LoginError {
+            errorMessage = apiError.localizedDescription
+        } else {
+            errorMessage = "An error occurred"
+        }
+        isLoggedIn = false
+    }
+
+
+    func clearCredentials() {
+        username = ""
+        password = ""
     }
 
     func isValidEmail(_ email: String) -> Bool {
@@ -95,5 +114,5 @@ class LoginViewModel: ObservableObject {
             errorMessage = "Password must be at least 6 characters long and contain letters, digits, and special characters"
             return
         }
-    }    
+    }
 }
