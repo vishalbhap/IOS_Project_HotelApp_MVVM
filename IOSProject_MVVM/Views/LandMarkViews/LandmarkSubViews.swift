@@ -8,7 +8,6 @@
 import Foundation
 import SwiftUI
 
-
 // Search Bar View with Button action
 struct SearchBarView: View {
     @Binding var textInput: String
@@ -56,38 +55,6 @@ struct LandmarkListView: View {
 }
 
 
-extension LandMarkScreenView {
-
-    var errorAlert: Alert {
-        Alert(
-            title: Text("Error"),
-            message: Text(landMarkViewModel.state.localizedDescription),
-            primaryButton: .default(Text("Retry"), action: landMarkViewModel.fetchLandMarks),
-            secondaryButton: .cancel(Text("Cancel"))
-        )
-    }
-
-
-    var HomeButton: some View {
-        Button(action: {
-            landMarkViewModel.state = .none
-        }) {
-            SwiftUI.Image(systemName: "house.fill") // Use your back arrow icon here
-                .foregroundColor(.blue) // Adjust color as needed
-                .imageScale(.large)
-        }
-    }
-
-    var LogoutButton: some View {
-        Button(action: {
-            landMarkViewModel.logout()
-            loginViewModel.isLoggedIn = false
-        }) {
-            Text("Logout")
-                .foregroundColor(.red)
-        }
-    }
-}
 
 
 

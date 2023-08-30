@@ -15,26 +15,22 @@ struct LandMarkScreenView: View {
     var body: some View {
 //        NavigationView {
             VStack {
-                SearchBarView(
-                    textInput: $landMarkViewModel.textInputForLocation,
-                    searchAction: {landMarkViewModel.fetchLandMarks()
-                })
+                LandmarkSearchBarView
 
                 switch landMarkViewModel.state {
                     case .success(let landmarks):
-                    LandmarkListView(entities: landmarks, landMarkViewModel: landMarkViewModel)
+                        LandmarkListView(entities: landmarks, landMarkViewModel: landMarkViewModel)
                                     .navigationBarTitle("Landmarks")
                                     .environmentObject(loginViewModel)
 
                     case .dataEmpty:
-                        Text("No Data Found for this location")
+                        DataEmptyView
 
                     case .loading:
-                        ProgressView()
-                        Text("Fetching lamdmarks...")
+                        LandmarkProgressView
 
                     case .noTextInput:
-                        Text("Enter some location")
+                        NoInputView
 
                     default:
                         EmptyView()
@@ -42,7 +38,7 @@ struct LandMarkScreenView: View {
 
                 if case .success = landMarkViewModel.state { }
                 else {
-                    StaticLandMarkViews( landMarkViewModel: landMarkViewModel)
+                    StaticlandmarkDataView
                 }
             }
             .alert(isPresented: $landMarkViewModel.hasError) {

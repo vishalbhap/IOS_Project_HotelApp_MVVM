@@ -8,27 +8,25 @@
 import SwiftUI
 
 struct LoginScreenView: View {
-    @StateObject var loginViewModel: LoginViewModel = LoginViewModel()
-    
+    @StateObject var loginViewModel: LoginViewModel = LoginViewModel()    
 
     var body: some View {
         NavigationStack {
             ZStack {
-                LoginScreenBackground()
+                LoginBackgroundView
 
                 VStack {
-                        LoginTitle()
+                        LoginTitleView
 
-                        EmailInputFieldView(loginViewModel: loginViewModel)
-                            .padding(.bottom)
+                        EmailTextInputFieldView
 
-                        PasswordInputFieldView(loginViewModel: loginViewModel)
+                        PasswordTextInputFieldView
 
-                        ErrorMessageView(loginViewModel: loginViewModel)
+                        ErrorMessageFieldView
 
-                        KeepSignedForgotPasswordView(loginViewModel: loginViewModel)
+                        KeepSignedForgotPasswordFieldView
 
-                        LoginButtonView(loginViewModel: loginViewModel)
+                        LoginButtonFieldView
             }
             .padding()
             .navigationDestination(isPresented: $loginViewModel.isLoggedIn) {
