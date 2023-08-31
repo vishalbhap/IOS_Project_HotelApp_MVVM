@@ -12,7 +12,7 @@ import SwiftUI
 extension HotelListScreenView {
 
     var HotelSearchBarView: some View {
-        HotelSearchBar(searchText: $hotelListViewModel.searchText)
+        HotelSearchBar(hotelListViewModel: hotelListViewModel, searchText: $hotelListViewModel.searchText)
     }
 
     var SortedButtonsView: some View {

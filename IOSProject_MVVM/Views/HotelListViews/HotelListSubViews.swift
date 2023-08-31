@@ -11,6 +11,7 @@ import SwiftUI
 // Hotel SearchBar View
 struct HotelSearchBar : View {
 
+    @ObservedObject var hotelListViewModel:HotelListViewModel
     @Binding var searchText: String
     @State var isSearching = false
 
@@ -18,7 +19,7 @@ struct HotelSearchBar : View {
         VStack{
             TextField("Search hotels here", text: $searchText)
                 .padding(.leading, 30)
-                .foregroundColor(Color.black)
+//                .foregroundColor(Color.primary)
                 .frame(width: 327,height: 1)
                 .shadow(color: Color.black.opacity(0.06), radius: 5, x: 5, y: 5)
                 .shadow(color: Color.black.opacity(0.06), radius: 5, x: -5, y: -5)
@@ -30,6 +31,7 @@ struct HotelSearchBar : View {
                 .onTapGesture(perform: {
                     isSearching = true
                 })
+                .environment(\.colorScheme, hotelListViewModel.isDarkMode ? .dark : .light)
                 .overlay(
                     HStack {
                         SwiftUI.Image(systemName: "magnifyingglass")
@@ -47,7 +49,7 @@ struct HotelSearchBar : View {
                 )
         }
         .padding(.bottom, 20)
-        .background(Color.white)
+//        .background(Color.white)
     }
 }
 

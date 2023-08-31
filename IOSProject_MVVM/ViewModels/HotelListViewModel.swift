@@ -30,6 +30,10 @@ class HotelListViewModel: ObservableObject {
 
     @Published var pageLimit = 5
     @Published var pageIndex = 0
+
+    var isDarkMode: Bool {
+            UIScreen.main.traitCollection.userInterfaceStyle == .dark
+    }
     
     func fetchHotels(geoId: String) {
         self.state = .loading
