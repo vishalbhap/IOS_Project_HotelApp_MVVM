@@ -36,22 +36,30 @@ class HotelListViewModel: ObservableObject {
     }
     
     func fetchHotels(geoId: String) {
-        self.state = .loading
-        self.hasError = false
-        Task {
-            do {
-                let decodedData = try await hotelListService.fetchHotels(geoId: geoId, sortType: sortType.description, pageLimit: self.pageLimit, pageIndex: self.pageIndex)
-                self.properties = (decodedData.data?.propertySearch?.properties) ?? []
-                let hotelList = await toHotelModels(properties: self.properties)
-                self.hotels.append(contentsOf: hotelList)
-                self.state = .success(data: self.hotels)
-            } catch {
-                print("Error fetching citiess: \(error)")
-                self.state = .failed(error: error)
-                self.hasError = true
-            }
-        }
-    }
+          state = .loading
+          hasError = false
+
+          Task {
+              do {
+                  let decodedData = try await fetchHotelData(geoId: geoId)
+                  properties = decodedData.data?.propertySearch?.properties ?? []
+                  hotels.append(contentsOf: await toHotelModels(properties: properties))
+                  state = .success(data: hotels)
+              } catch {
+                  handleFetchError(error)
+              }
+          }
+      }
+
+      private func fetchHotelData(geoId: String) async throws -> HotelListResponse {
+          return try await hotelListService.fetchHotels(geoId: geoId, sortType: sortType.description, pageLimit: pageLimit, pageIndex: pageIndex)
+      }
+
+      private func handleFetchError(_ error: Error) {
+          print("Error fetching hotels: \(error)")
+          state = .failed(error: error)
+          hasError = true
+      }
     
     func toHotelModels(properties: [Properties]) async -> [HotelModel] {
         var hotelModels: [HotelModel] = []

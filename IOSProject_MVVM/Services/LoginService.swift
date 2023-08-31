@@ -10,27 +10,27 @@ import Foundation
 class LoginService {
 
     func login(username: String, password: String) async throws -> [LoginModel] {
-//        guard let url = URL(string: "http://localhost:3000/login") else {
+        //        guard let url = URL(string: "http://localhost:3000/login") else {
         guard let url = URL(string: "http://172.27.46.174:3000/login") else {
-           throw LoginError.invalidURL
-       }
-       let request = CommonServiceData().configureRequest(url: url, httpMethod: "GET")
+            throw LoginError.invalidURL
+        }
+        let request = CommonServiceData().configureRequest(url: url, httpMethod: "GET")
 
-       let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await URLSession.shared.data(for: request)
 
-       try CommonServiceData().checkForCommonResponseErrors(response: response as! HTTPURLResponse)
+        try CommonServiceData().checkForCommonResponseErrors(response: response as! HTTPURLResponse)
 
-       guard let response = response as? HTTPURLResponse, response.statusCode == 200 else{
-           throw LoginError.serverError
-       }
+        guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
+            throw LoginError.serverError
+        }
 
-       do {
-           let decodedData = try JSONDecoder().decode(LoginModelResponse.self, from: data)
-           let loginModelArray = decodedData.logins
-           return loginModelArray
-       } catch {
-           throw LoginError.invalidData
-       }
+        do {
+            let decodedData = try JSONDecoder().decode(LoginModelResponse.self, from: data)
+            let loginModelArray = decodedData.logins
+            return loginModelArray
+        } catch {
+            throw LoginError.invalidData
+        }
     }
     
 }
