@@ -10,7 +10,8 @@ import Foundation
 class LoginService {
 
     func login(username: String, password: String) async throws -> [LoginModel] {
-        guard let url = URL(string: "http://localhost:3000/login") else {
+//        guard let url = URL(string: "http://localhost:3000/login") else {
+        guard let url = URL(string: "http://172.27.46.174:3000/login") else {
            throw LoginError.invalidURL
        }
        let request = CommonServiceData().configureRequest(url: url, httpMethod: "GET")

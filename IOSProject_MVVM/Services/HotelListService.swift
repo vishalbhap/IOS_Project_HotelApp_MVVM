@@ -56,6 +56,4 @@ class HotelListService{
         )
         return hotelRequestData
     }
-
-
 }
