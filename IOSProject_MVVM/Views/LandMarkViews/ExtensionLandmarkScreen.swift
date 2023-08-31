@@ -18,6 +18,12 @@ extension LandMarkScreenView {
         })
     }
 
+    var LandMarkListView: some View {
+        LandmarkListView(entities: landMarkViewModel.entities, landMarkViewModel: landMarkViewModel)
+                        .navigationBarTitle("Landmarks")
+                        .environmentObject(loginViewModel)
+    }
+
     var DataEmptyView: some View {
         Text("No Data Found for this location")
     }
@@ -25,7 +31,7 @@ extension LandMarkScreenView {
     var LandmarkProgressView: some View {
         VStack{
             ProgressView()
-            Text("Fetching lamdmarks...")
+            Text("Fetching landmarks...")
         }
     }
 

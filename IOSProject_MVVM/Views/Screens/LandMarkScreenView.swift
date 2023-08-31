@@ -18,22 +18,15 @@ struct LandMarkScreenView: View {
                 LandmarkSearchBarView
 
                 switch landMarkViewModel.state {
-                    case .success(let landmarks):
-                        LandmarkListView(entities: landmarks, landMarkViewModel: landMarkViewModel)
-                                    .navigationBarTitle("Landmarks")
-                                    .environmentObject(loginViewModel)
+                        case .success:  LandMarkListView
 
-                    case .dataEmpty:
-                        DataEmptyView
+                        case .dataEmpty:  DataEmptyView
 
-                    case .loading:
-                        LandmarkProgressView
+                        case .loading:  LandmarkProgressView
 
-                    case .noTextInput:
-                        NoInputView
+                        case .noTextInput:  NoInputView
 
-                    default:
-                        EmptyView()
+                        default:  EmptyView()
                     }
 
                 if case .success = landMarkViewModel.state { }

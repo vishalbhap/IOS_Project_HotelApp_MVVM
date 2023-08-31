@@ -15,6 +15,7 @@ class LandMarkViewModel: ObservableObject {
     @Published var textInputForLocation: String = ""
     @Published var placeName: String = ""
     private let landMarkService = LandMarkService()
+    @Published var entities: [Entity] = []
 
     func fetchLandMarks() {
         guard !textInputForLocation.isEmpty else {
@@ -29,7 +30,8 @@ class LandMarkViewModel: ObservableObject {
                 if decodedData.suggestions[0].entities.isEmpty{
                     self.state = .dataEmpty
                 }else{
-                    self.state = .success(data: decodedData.suggestions[0].entities)
+                    self.state = .success
+                    self.entities = decodedData.suggestions[0].entities
                     self.placeName = decodedData.term
                 }
                 textInputForLocation = ""
@@ -55,7 +57,8 @@ class LandMarkViewModel: ObservableObject {
                 if decodedData.suggestions[0].entities.isEmpty{
                     self.state = .dataEmpty
                 }else{
-                    self.state = .success(data: decodedData.suggestions[0].entities)
+                    self.state = .success
+                    self.entities = decodedData.suggestions[0].entities
                     self.textInputForLocation = locationInputValue
                     self.placeName = decodedData.term
                 }
@@ -72,7 +75,7 @@ class LandMarkViewModel: ObservableObject {
     enum State {
         case none
         case loading
-        case success(data: [Entity])
+        case success
         case failed(error: Error)
         case noTextInput
         case dataEmpty
