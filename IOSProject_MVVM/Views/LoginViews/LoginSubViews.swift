@@ -46,12 +46,14 @@ struct EmailInputFieldView: View {
                     .padding(.leading, 10) // Keep the same leading padding for both images
 
                 TextField("Email", text: $loginViewModel.username)
-                    .autocapitalization(.none)
-                    .disableAutocorrection(true)
-                    .padding(.horizontal)
-                    .onTapGesture {
-                        loginViewModel.errorMessage = ""
-                    }
+                                .autocapitalization(.none)
+                                .disableAutocorrection(true)
+                                .padding(.horizontal)
+                                .onTapGesture {
+                                    loginViewModel.errorMessage = ""
+                                }
+                        }
+                        .environment(\.colorScheme, loginViewModel.isDarkMode ? .dark : .light)
             }
             .padding()
             .background(
@@ -65,7 +67,7 @@ struct EmailInputFieldView: View {
             )
         }
     }
-}
+
 
 struct PasswordInputFieldView: View {
     @StateObject var loginViewModel: LoginViewModel
@@ -83,11 +85,13 @@ struct PasswordInputFieldView: View {
                         .onTapGesture {
                             loginViewModel.errorMessage = ""
                         }
+                        .environment(\.colorScheme, loginViewModel.isDarkMode ? .dark : .light)
                 } else {
                     SecureField("Password", text: $loginViewModel.password)
                         .onTapGesture {
                             loginViewModel.errorMessage = ""
                         }
+                        .environment(\.colorScheme, loginViewModel.isDarkMode ? .dark : .light)
                 }
 
                 Button(action: {

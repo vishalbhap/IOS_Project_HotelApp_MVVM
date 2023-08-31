@@ -47,7 +47,7 @@ struct LandmarkListView: View {
                     
             } label: {
                 Text(landmark.name)
-                    .foregroundColor(.blue)
+                    .foregroundColor(Color.primary)
                     .padding(.vertical)
             }
         }

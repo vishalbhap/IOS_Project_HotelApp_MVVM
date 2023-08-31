@@ -20,7 +20,9 @@ class LoginViewModel: ObservableObject {
     
     private let loginService = LoginService()
 
-
+    var isDarkMode: Bool {
+            UIScreen.main.traitCollection.userInterfaceStyle == .dark
+    }
 
 
     // Calling service functionality
