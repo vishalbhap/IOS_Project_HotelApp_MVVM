@@ -7,11 +7,11 @@
 
 import Foundation
 
-//protocol HotelListServiceProtocol {
-//    func fetchLandMarksData(location: String) async throws -> LandmarkModelResponse
-//}
+protocol HotelListServiceProtocol {
+    func fetchHotels(geoId: String, sortType: String, pageLimit: Int, pageIndex: Int) async throws -> HotelListResponse
+}
 
-class HotelListService{
+class HotelListService: HotelListServiceProtocol {
 
     func fetchHotels(geoId: String, sortType: String, pageLimit: Int, pageIndex: Int) async throws -> HotelListResponse {
         guard let url = URL(string: "https://hotels4.p.rapidapi.com/properties/v2/list") else {

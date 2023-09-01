@@ -16,7 +16,6 @@ class LandmarkViewModel: LandmarkViewModelProtocol {
 
     @Published var hasError: Bool = false
     @Published var textInputForLocation: String = ""
-    @Published var placeName: String = ""
     @Published var state: ViewState = .none
 
     @Published var entities: [Entity] = []
@@ -42,21 +41,22 @@ class LandmarkViewModel: LandmarkViewModelProtocol {
                 }else{
                     self.state = .success
                     self.entities = decodedData.suggestions[0].entities
-                    self.placeName = decodedData.term
                 }
-                textInputForLocation = ""
             } catch {
-                self.state = .failed(error: error)
-                self.hasError = true
+                handleFetchError(error)
             }
         }
     }
 
+    private func handleFetchError(_ error: Error) {
+        state = .failed(error: error)
+        hasError = true
+    }
 
     func logout() {
-            // Implement logout actions here
-            // This might include clearing user data, resetting the login state, etc.
-        }
+        // Implement logout actions here
+        // This might include clearing user data, resetting the login state, etc.
+    }
 
 }
 

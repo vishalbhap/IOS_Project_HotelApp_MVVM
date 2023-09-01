@@ -8,7 +8,7 @@ import SwiftUI
 
 struct HotelListScreenView: View {
     var geoId: String?
-    @ObservedObject var hotelListViewModel = HotelListViewModel()
+    @ObservedObject var hotelListViewModel = HotelListViewModel(hotelListService: HotelListService())
     @ObservedObject var landMarkViewModel: LandmarkViewModel = LandmarkViewModel(landMarkService: LandmarkAPIService())
     @EnvironmentObject var loginViewModel: LoginViewModel
     @Environment(\.presentationMode) var presentationMode

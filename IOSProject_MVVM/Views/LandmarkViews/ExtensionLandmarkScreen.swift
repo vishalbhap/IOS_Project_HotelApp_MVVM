@@ -56,7 +56,7 @@ extension LandmarkScreenView {
 
     var HomeButton: some View {
         Button(action: {
-//            landMarkViewModel.textInputForLocation = ""
+            landMarkViewModel.textInputForLocation = ""
             landMarkViewModel.state = .none
         }) {
             SwiftUI.Image(systemName: "house.fill") // Use your back arrow icon here

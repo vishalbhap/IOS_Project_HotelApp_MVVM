@@ -16,20 +16,20 @@ import SwiftUI
 @MainActor
 class HotelListViewModel: ObservableObject {
 
-    @Published var sortType: SortType = .RECOMMENDED
     @Published var searchText: String = ""
-
-    @Published var state: ViewState = .none
     @Published var hasError: Bool = false
-    
-    @Published var hotelListResponse: HotelListResponse?
-    @Published var properties: [Properties] = []
-    @Published var hotels: [CustomHotelModel] = []
-    
-    private let hotelListService = HotelListService()
-
+    @Published var state: ViewState = .none
+    @Published var sortType: SortType = .RECOMMENDED
     @Published var pageLimit = 5
     @Published var pageIndex = 0
+    @Published var hotels: [CustomHotelModel] = []
+    
+    private let hotelListService: HotelListServiceProtocol
+
+    init(hotelListService: HotelListServiceProtocol) {
+        self.hotelListService = hotelListService
+    }
+
 
     var isDarkMode: Bool {
             UIScreen.main.traitCollection.userInterfaceStyle == .dark
@@ -38,11 +38,10 @@ class HotelListViewModel: ObservableObject {
     func fetchHotels(geoId: String) {
           state = .loading
           hasError = false
-
           Task {
               do {
                   let decodedData = try await fetchHotelData(geoId: geoId)
-                  properties = decodedData.data?.propertySearch?.properties ?? []
+                  let properties = decodedData.data?.propertySearch?.properties ?? []
                   hotels.append(contentsOf: await toHotelModels(properties: properties))
                   state = .success
               } catch {

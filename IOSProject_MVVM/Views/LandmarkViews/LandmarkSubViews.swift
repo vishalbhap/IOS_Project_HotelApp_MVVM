@@ -38,7 +38,7 @@ struct LandmarkListView: View {
     @ObservedObject var landMarkViewModel: LandmarkViewModel
 
     var body: some View {
-        Text("Showing results for \(landMarkViewModel.placeName)")
+        Text("Showing results for \(landMarkViewModel.textInputForLocation)")
         
         List(entities) { landmark in
             NavigationLink {

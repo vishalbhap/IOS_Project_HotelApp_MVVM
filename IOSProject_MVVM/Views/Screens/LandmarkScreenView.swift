@@ -18,9 +18,9 @@ struct LandmarkScreenView: View {
                 LandmarkSearchBarView
 
                 switch landMarkViewModel.state {
-                        case .success:  LandMarkListView
-                        case .dataEmpty:  DataEmptyView
-                        case .loading:  LandmarkProgressView
+                        case .success:      LandMarkListView
+                        case .dataEmpty:    DataEmptyView
+                        case .loading:      LandmarkProgressView
                         case .noTextInput:  NoInputView
                         default:  EmptyView()
                     }
