@@ -57,7 +57,8 @@ struct HotelCardView: View {
                                 .clipShape(Circle())
                                 .overlay(Circle().stroke(Color.gray, lineWidth: 2))
                                 .onTapGesture {
-                                    landMarkViewModel.fetchLandMarks(locationInputValue: showHotel.imageText)
+                                    landMarkViewModel.textInputForLocation = showHotel.imageText
+                                    landMarkViewModel.fetchLandMarks()
                                 }
                         case .failure(_):
                             Color.gray // Placeholder or error image
@@ -76,7 +77,8 @@ struct HotelCardView: View {
                     .clipShape(Circle())
                     .overlay(Circle().stroke(Color.gray, lineWidth: 2))
                     .onTapGesture {
-                        landMarkViewModel.fetchLandMarks(locationInputValue: showHotel.imageText)
+                        landMarkViewModel.textInputForLocation = showHotel.imageText
+                        landMarkViewModel.fetchLandMarks()
                     }
             } else {
                 Color.gray

@@ -76,5 +76,25 @@ class CommonDataService {
     
 }
 
+enum ViewState {
+    case none
+    case loading
+    case success
+    case failed(error: Error)
+    case noTextInput
+    case dataEmpty
+
+    var localizedDescription: String {
+        switch self {
+        case .none: return "No state"
+        case .loading: return "Loading"
+        case .success: return "Success"
+        case .failed(let error): return error.localizedDescription
+        case .noTextInput: return "No input"
+        case .dataEmpty: return "No Data available"
+        }
+    }
+}
+
 
 

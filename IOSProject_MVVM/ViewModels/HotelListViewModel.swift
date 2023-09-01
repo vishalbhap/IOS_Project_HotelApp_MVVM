@@ -19,7 +19,7 @@ class HotelListViewModel: ObservableObject {
     @Published var sortType: SortType = .RECOMMENDED
     @Published var searchText: String = ""
 
-    @Published var state: State = .none
+    @Published var state: ViewState = .none
     @Published var hasError: Bool = false
     
     @Published var hotelListResponse: HotelListResponse?
@@ -44,7 +44,7 @@ class HotelListViewModel: ObservableObject {
                   let decodedData = try await fetchHotelData(geoId: geoId)
                   properties = decodedData.data?.propertySearch?.properties ?? []
                   hotels.append(contentsOf: await toHotelModels(properties: properties))
-                  state = .success(data: hotels)
+                  state = .success
               } catch {
                   handleFetchError(error)
               }
@@ -85,26 +85,6 @@ class HotelListViewModel: ObservableObject {
         }
 
         return hotelModels
-    }
-
-    enum State {
-        case none
-        case loading
-        case success(data: [CustomHotelModel])
-        case failed(error: Error)
-
-        var localizedDescription: String {
-            switch self {
-            case .none:
-                return "No state"
-            case .loading:
-                return "Loading"
-            case .success:
-                return "Success"
-            case .failed(let error):
-                return error.localizedDescription
-            }
-        }
     }
 }
 

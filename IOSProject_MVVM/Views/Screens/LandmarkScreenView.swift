@@ -19,24 +19,15 @@ struct LandmarkScreenView: View {
 
                 switch landMarkViewModel.state {
                         case .success:  LandMarkListView
-
                         case .dataEmpty:  DataEmptyView
-
                         case .loading:  LandmarkProgressView
-
                         case .noTextInput:  NoInputView
-
                         default:  EmptyView()
                     }
-
                 if case .success = landMarkViewModel.state { }
-                else {
-                    StaticlandmarkDataView
-                }
+                else { StaticlandmarkDataView }
             }
-            .alert(isPresented: $landMarkViewModel.hasError) {
-                errorAlert
-            }
+            .alert(isPresented: $landMarkViewModel.hasError) { errorAlert }
             .navigationBarBackButtonHidden()
             .navigationTitle("Welcome to Hotels")
             .navigationBarItems(trailing: LogoutButton )
