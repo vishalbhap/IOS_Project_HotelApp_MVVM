@@ -9,18 +9,15 @@ import SwiftUI
 struct HotelListScreenView: View {
     var geoId: String?
     @ObservedObject var hotelListViewModel = HotelListViewModel()
-    @ObservedObject var landMarkViewModel: LandmarkViewModel = LandmarkViewModel()
+    @ObservedObject var landMarkViewModel: LandmarkViewModel = LandmarkViewModel(landMarkService: LandmarkAPIService())
     @EnvironmentObject var loginViewModel: LoginViewModel
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
         VStack {
             HotelSearchBarView
-            
             SortedButtonsView
-
             HotelListView
-
             HotelProgessView
         }
         .onAppear {

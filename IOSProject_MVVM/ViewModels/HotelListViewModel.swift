@@ -24,7 +24,7 @@ class HotelListViewModel: ObservableObject {
     
     @Published var hotelListResponse: HotelListResponse?
     @Published var properties: [Properties] = []
-    @Published var hotels: [HotelModel] = []
+    @Published var hotels: [CustomHotelModel] = []
     
     private let hotelListService = HotelListService()
 
@@ -61,8 +61,8 @@ class HotelListViewModel: ObservableObject {
           hasError = true
       }
     
-    func toHotelModels(properties: [Properties]) async -> [HotelModel] {
-        var hotelModels: [HotelModel] = []
+    func toHotelModels(properties: [Properties]) async -> [CustomHotelModel] {
+        var hotelModels: [CustomHotelModel] = []
 
         for property in properties {
             var address = "Address not available"
@@ -72,7 +72,7 @@ class HotelListViewModel: ObservableObject {
             address = await HotelAddressService().getAddressFromCoordinates(latitude: latitude, longitude: longitude)
 
 
-            let hotelModel = HotelModel(name: property.name,
+            let hotelModel = CustomHotelModel(name: property.name,
                                         address: address,
                                         price: property.price?.options[0].formattedDisplayPrice ?? "Nil",
                                         strikeouprice: property.price?.options[0].strikeOut?.formatted ?? "",
@@ -90,7 +90,7 @@ class HotelListViewModel: ObservableObject {
     enum State {
         case none
         case loading
-        case success(data: [HotelModel])
+        case success(data: [CustomHotelModel])
         case failed(error: Error)
 
         var localizedDescription: String {

@@ -87,7 +87,7 @@ extension HotelListScreenView {
         fetchHotels()
     }
 
-    var filteredHotels: [HotelModel] {
+    var filteredHotels: [CustomHotelModel] {
         if hotelListViewModel.searchText.count >= 3 {
             return hotelListViewModel.hotels.filter { hotel in
                 let searchTextLowercased = hotelListViewModel.searchText.lowercased()

@@ -115,7 +115,7 @@ struct ButtonHighlightModifier: ViewModifier {
 struct HotelListItemView: View {
 
     let index: Int
-    let hotel: HotelModel
+    let hotel: CustomHotelModel
 
     var body: some View {
 

@@ -25,6 +25,6 @@ struct StaticLandMarkViews: View {
 
 struct StaticLandMarkViews_Previews: PreviewProvider {
     static var previews: some View {
-        StaticLandMarkViews(landMarkViewModel: LandmarkViewModel())
+        StaticLandMarkViews(landMarkViewModel: LandmarkViewModel(landMarkService: LandmarkAPIService()))
     }
 }

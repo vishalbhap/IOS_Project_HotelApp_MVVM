@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct LandmarkScreenView: View {
-    @ObservedObject var landMarkViewModel: LandmarkViewModel = LandmarkViewModel()
+    @StateObject var landMarkViewModel: LandmarkViewModel = LandmarkViewModel(landMarkService: LandmarkAPIService())
     @EnvironmentObject var loginViewModel: LoginViewModel
 
     var body: some View {

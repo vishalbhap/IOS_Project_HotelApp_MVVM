@@ -8,18 +8,20 @@
 import Foundation
 
 protocol LandmarkServiceProtocol {
-//        func fetchItems() async throws -> [Item]
+    func fetchLandMarksData(location: String) async throws -> LandmarkModelResponse
 }
 
 
-class LandmarkService {
+class LandmarkAPIService: LandmarkServiceProtocol {
 
     func fetchLandMarksData(location: String) async throws -> LandmarkModelResponse {
-        guard let url = URL(string: "https://hotels4.p.rapidapi.com/locations/v2/search?query=\(location)") else {
+        let urlString = APIConfig.baseUrl.appending("locations/v2/search?query=\(location)")
+        
+        guard let url = URL(string: urlString) else {
             throw LandmarkServiceError.invalidURL
         }
         let request = CommonDataService().configureRequest(url: url, httpMethod: "GET")
-        let (data, response) = try await URLSession.shared.data(for: request)
+        let (data, response) = try await APIConfig.urlSession.data(for: request)
 
         // For developers error handling
         try CommonDataService().checkForCommonResponseErrors(response: response as! HTTPURLResponse)

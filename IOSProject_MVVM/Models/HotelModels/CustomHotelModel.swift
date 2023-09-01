@@ -9,10 +9,10 @@
 import Foundation
 
 struct HotelListModel: Decodable {
-    let hoteldetails: [HotelModel]
+    let hoteldetails: [CustomHotelModel]
 }
 
-struct HotelModel: Codable, Identifiable{
+struct CustomHotelModel: Codable, Identifiable{
    enum CodingKeys: CodingKey {
        case name
        case address

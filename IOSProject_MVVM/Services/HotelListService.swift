@@ -7,6 +7,10 @@
 
 import Foundation
 
+//protocol HotelListServiceProtocol {
+//    func fetchLandMarksData(location: String) async throws -> LandmarkModelResponse
+//}
+
 class HotelListService{
 
     func fetchHotels(geoId: String, sortType: String, pageLimit: Int, pageIndex: Int) async throws -> HotelListResponse {

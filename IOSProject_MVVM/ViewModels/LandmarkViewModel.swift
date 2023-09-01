@@ -7,15 +7,25 @@
 
 import Foundation
 
-@MainActor
-class LandmarkViewModel: ObservableObject {
+protocol LandmarkViewModelProtocol: ObservableObject {
+    func fetchLandMarks() async
+}
 
-    @Published var state: State = .none
+@MainActor
+class LandmarkViewModel: LandmarkViewModelProtocol {
+
     @Published var hasError: Bool = false
     @Published var textInputForLocation: String = ""
     @Published var placeName: String = ""
-    private let landMarkService = LandmarkService()
+    @Published var state: State = .none
+
     @Published var entities: [Entity] = []
+    private let landMarkService: LandmarkServiceProtocol
+
+
+    init(landMarkService: LandmarkServiceProtocol) {
+        self.landMarkService = landMarkService
+    }
 
     func fetchLandMarks() {
         guard !textInputForLocation.isEmpty else {
