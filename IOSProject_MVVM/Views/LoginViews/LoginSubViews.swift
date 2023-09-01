@@ -10,10 +10,10 @@ import SwiftUI
 struct LoginScreenBackground: View {
     var body: some View {
         LinearGradient(
-            gradient: Gradient(colors: [Color("PrimaryBlue"), Color("SecondaryTeal")]),
-//            gradient: Gradient(colors: [Color.white, Color.gray]),
+//            gradient: Gradient(colors: [Color("PrimaryBlue"), Color("SecondaryTeal")]),
+            gradient: Gradient(colors: [Color.yellow.opacity(0.7), Color.yellow.opacity(0.8)]),
             startPoint: .top,
-            endPoint: .bottom
+            endPoint: .bottomLeading
         )
         .ignoresSafeArea()
     }

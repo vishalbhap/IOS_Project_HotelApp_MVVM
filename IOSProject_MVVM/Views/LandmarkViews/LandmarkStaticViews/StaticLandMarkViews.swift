@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StaticLandMarkViews: View {
-    @ObservedObject var landMarkViewModel: LandMarkViewModel
+    @ObservedObject var landMarkViewModel: LandmarkViewModel
     
     var body: some View {
         ScrollView {
@@ -25,6 +25,6 @@ struct StaticLandMarkViews: View {
 
 struct StaticLandMarkViews_Previews: PreviewProvider {
     static var previews: some View {
-        StaticLandMarkViews(landMarkViewModel: LandMarkViewModel())
+        StaticLandMarkViews(landMarkViewModel: LandmarkViewModel())
     }
 }

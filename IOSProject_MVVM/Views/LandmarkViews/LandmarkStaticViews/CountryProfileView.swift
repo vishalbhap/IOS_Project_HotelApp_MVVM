@@ -14,7 +14,7 @@ struct ProfileHotel: Identifiable {
 }
 
 struct CountryProfileView: View {
-    @ObservedObject var landMarkViewModel: LandMarkViewModel
+    @ObservedObject var landMarkViewModel: LandmarkViewModel
 
     let profileHotel: [ProfileHotel] = [
          ProfileHotel(profileName: "london", imageText: "London"),
@@ -42,7 +42,7 @@ struct CountryProfileView: View {
 
 struct HotelCardView: View {
     let showHotel: ProfileHotel
-    @ObservedObject var landMarkViewModel: LandMarkViewModel
+    @ObservedObject var landMarkViewModel: LandmarkViewModel
 
     var body: some View {
         VStack {
@@ -91,6 +91,6 @@ struct HotelCardView: View {
 
 struct CountryProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        CountryProfileView(landMarkViewModel: LandMarkViewModel())
+        CountryProfileView(landMarkViewModel: LandmarkViewModel())
     }
 }

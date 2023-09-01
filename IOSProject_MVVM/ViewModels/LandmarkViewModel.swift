@@ -8,13 +8,13 @@
 import Foundation
 
 @MainActor
-class LandMarkViewModel: ObservableObject {
+class LandmarkViewModel: ObservableObject {
 
     @Published var state: State = .none
     @Published var hasError: Bool = false
     @Published var textInputForLocation: String = ""
     @Published var placeName: String = ""
-    private let landMarkService = LandMarkService()
+    private let landMarkService = LandmarkService()
     @Published var entities: [Entity] = []
 
     func fetchLandMarks() {

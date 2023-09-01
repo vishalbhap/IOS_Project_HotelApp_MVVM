@@ -12,12 +12,12 @@ struct APIConfig {
     static let host = "hotels4.p.rapidapi.com"
 }
 
-//
-//protocol DataService {
-//
-//    func dataForUrl(urlRequest: URLRequest)
-//}
-//
+
+protocol DataService {
+
+    func dataForUrl(urlRequest: URLRequest)
+}
+
 //class NetworkDataService: DataService {
 //    func dataForUrl(urlRequest: URLRequest) {
 //
@@ -47,7 +47,7 @@ struct APIConfig {
 //
 //}
 
-class CommonServiceData {
+class CommonDataService {
 
 //    var config: DataServiceConfig
 

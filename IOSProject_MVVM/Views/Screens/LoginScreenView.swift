@@ -30,7 +30,7 @@ struct LoginScreenView: View {
             }
             .padding()
             .navigationDestination(isPresented: $loginViewModel.isLoggedIn) {
-                    LandMarkScreenView()
+                    LandmarkScreenView()
                         .environmentObject(loginViewModel)
                 }
             }

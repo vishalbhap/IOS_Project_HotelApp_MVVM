@@ -20,14 +20,14 @@ class HotelListService{
             throw HotelListServiceError.encodingFailed
         }
 
-        var request = CommonServiceData().configureRequest(url: url, httpMethod: "POST")
+        var request = CommonDataService().configureRequest(url: url, httpMethod: "POST")
         request.httpBody = jsonData
         let (data, response) = try await URLSession.shared.data(for: request)
 
-        try CommonServiceData().checkForCommonResponseErrors(response: response as! HTTPURLResponse)
+        try CommonDataService().checkForCommonResponseErrors(response: response as! HTTPURLResponse)
 
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else{
-            throw LandMarkServiceError.serverError
+            throw LandmarkServiceError.serverError
         }
         
         do {

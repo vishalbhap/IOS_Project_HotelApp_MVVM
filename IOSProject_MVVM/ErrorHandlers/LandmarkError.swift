@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum LandMarkServiceError: Error, LocalizedError {
+enum LandmarkServiceError: Error, LocalizedError {
     case invalidURL
     case serverError
     case invalidData

@@ -1,3 +1,4 @@
+
 //
 //  ExtensionLandmarkScreen.swift
 //  IOSProject_MVVM
@@ -9,7 +10,7 @@ import Foundation
 import SwiftUI
 
 // extension Views
-extension LandMarkScreenView {
+extension LandmarkScreenView {
 
     var LandmarkSearchBarView: some View {
         SearchBarView(

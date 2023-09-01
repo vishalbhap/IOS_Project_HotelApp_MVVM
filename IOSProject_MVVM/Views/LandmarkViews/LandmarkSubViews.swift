@@ -35,7 +35,7 @@ struct SearchBarView: View {
 struct LandmarkListView: View {
     var entities: [Entity]
     @EnvironmentObject var loginViewModel: LoginViewModel
-    @ObservedObject var landMarkViewModel: LandMarkViewModel
+    @ObservedObject var landMarkViewModel: LandmarkViewModel
 
     var body: some View {
         Text("Showing results for \(landMarkViewModel.placeName)")

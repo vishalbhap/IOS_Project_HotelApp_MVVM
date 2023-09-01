@@ -8,8 +8,8 @@
 import Foundation
 import SwiftUI
 
-struct LandMarkScreenView: View {
-    @ObservedObject var landMarkViewModel: LandMarkViewModel = LandMarkViewModel()
+struct LandmarkScreenView: View {
+    @ObservedObject var landMarkViewModel: LandmarkViewModel = LandmarkViewModel()
     @EnvironmentObject var loginViewModel: LoginViewModel
 
     var body: some View {
@@ -47,7 +47,7 @@ struct LandMarkScreenView: View {
 
 struct LandMarkScreenView_Previews: PreviewProvider {
     static var previews: some View {
-        LandMarkScreenView()
+        LandmarkScreenView()
                     .environmentObject(LoginViewModel())
     }
 }

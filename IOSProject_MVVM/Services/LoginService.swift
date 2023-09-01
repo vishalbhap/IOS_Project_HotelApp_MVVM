@@ -14,11 +14,11 @@ class LoginService {
         guard let url = URL(string: "http://172.27.46.174:3000/login") else {
             throw LoginError.invalidURL
         }
-        let request = CommonServiceData().configureRequest(url: url, httpMethod: "GET")
+        let request = CommonDataService().configureRequest(url: url, httpMethod: "GET")
 
         let (data, response) = try await URLSession.shared.data(for: request)
 
-        try CommonServiceData().checkForCommonResponseErrors(response: response as! HTTPURLResponse)
+        try CommonDataService().checkForCommonResponseErrors(response: response as! HTTPURLResponse)
 
         guard let response = response as? HTTPURLResponse, response.statusCode == 200 else {
             throw LoginError.serverError
