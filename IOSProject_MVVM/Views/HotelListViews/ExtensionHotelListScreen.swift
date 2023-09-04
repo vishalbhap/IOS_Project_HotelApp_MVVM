@@ -11,14 +11,17 @@ import SwiftUI
 // HotelList Sub Views
 extension HotelListScreenView {
 
+    // View for the hotel search bar
     var HotelSearchBarView: some View {
         HotelSearchBar(hotelListViewModel: hotelListViewModel, searchText: $hotelListViewModel.searchText)
     }
 
+    // View for sorting buttons
     var SortedButtonsView: some View {
         SortingButtonView(hotelListViewModel: hotelListViewModel, selectedSortType: $hotelListViewModel.sortType, geoId: geoId!)
     }
 
+    // View for displaying the list of hotels
     var HotelListView: some View {
         List(Array(filteredHotels.enumerated()), id: \.element.id) { index, hotel in
             HotelListItemView(index: index, hotel: hotel)
@@ -30,8 +33,9 @@ extension HotelListScreenView {
         }
     }
 
+    // View for displaying a loading indicator when fetching hotels
     var HotelProgessView: some View {
-        VStack{
+        VStack {
             if case .loading = hotelListViewModel.state {
                 ProgressView()
                 Text("Fetching Hotels")
@@ -39,6 +43,7 @@ extension HotelListScreenView {
         }
     }
 
+    // Alert for displaying errors
     var errorAlert: Alert {
         Alert(
             title: Text("Error"),
@@ -48,9 +53,10 @@ extension HotelListScreenView {
         )
     }
 
+    // Back button to go back to the previous page
     var BackButton: some View {
         Button(action: {
-            presentationMode.wrappedValue.dismiss() // Go back to previous page
+            presentationMode.wrappedValue.dismiss() // Go back to the previous page
         }) {
             SwiftUI.Image(systemName: "chevron.left") // Use your back arrow icon here
                 .foregroundColor(.blue) // Adjust color as needed
@@ -58,6 +64,7 @@ extension HotelListScreenView {
         }
     }
 
+    // Logout button to log out the user
     var LogoutButton: some View {
         Button(action: {
             landMarkViewModel.logout()
@@ -69,24 +76,27 @@ extension HotelListScreenView {
     }
 }
 
-
-// Functions HotelList
+// Functions for HotelListScreenView
 extension HotelListScreenView {
-    
+
+    // Function to fetch hotels
     func fetchHotels() {
         hotelListViewModel.fetchHotels(geoId: geoId ?? "1598")
     }
 
+    // Function to paginate hotels
     func paginateHotels() {
         print("DEBUG: Paginate here")
         hotelListViewModel.pageIndex += hotelListViewModel.pageLimit
         fetchHotels()
     }
 
+    // Function to retry fetching hotels
     func retryFetchingHotels() {
         fetchHotels()
     }
 
+    // Filtered list of hotels based on search text
     var filteredHotels: [CustomHotelModel] {
         if hotelListViewModel.searchText.count >= 3 {
             return hotelListViewModel.hotels.filter { hotel in
@@ -99,6 +109,4 @@ extension HotelListScreenView {
             return hotelListViewModel.hotels
         }
     }
-
 }
-

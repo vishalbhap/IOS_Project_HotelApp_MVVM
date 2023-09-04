@@ -17,9 +17,11 @@ class ImageLoader: ObservableObject {
         }
 
         do {
-            let (data, _) = try await URLSession.shared.data(from: url)
+            // Use URLSession to fetch image data from the provided URL.
+            let (data, _) = try await APIConfig.urlSession.data(from: url)
             if let image = UIImage(data: data) {
-                DispatchQueue.main.async { // Update the cache on the main thread
+                // Once the image data is received, update the cache on the main thread.
+                DispatchQueue.main.async {
                     self.imageCache[url] = image
                 }
             }
@@ -35,18 +37,21 @@ struct AsyncImageView: View {
 
     var body: some View {
         if let image = imageLoader.imageCache[url] {
+            // If the image is cached, display it immediately.
             SwiftUI.Image(uiImage: image)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: .infinity)
                 .cornerRadius(25)
         } else {
+            // If the image is not cached, show a placeholder and initiate image loading.
             SwiftUI.Image(systemName: "photo")
                 .resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: .infinity)
                 .cornerRadius(25)
                 .task {
+                    // Initiate the asynchronous image loading process.
                     await imageLoader.loadImage(from: url)
                 }
         }

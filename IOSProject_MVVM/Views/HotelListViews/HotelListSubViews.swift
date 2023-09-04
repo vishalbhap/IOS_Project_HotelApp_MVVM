@@ -19,11 +19,9 @@ struct HotelSearchBar : View {
         VStack{
             TextField("Search hotels here", text: $searchText)
                 .padding(.leading, 30)
-//                .foregroundColor(Color.primary)
                 .frame(width: 327,height: 1)
                 .shadow(color: Color.black.opacity(0.06), radius: 5, x: 5, y: 5)
                 .shadow(color: Color.black.opacity(0.06), radius: 5, x: -5, y: -5)
-
                 .padding()
                 .background(Color.white)
                 .cornerRadius(5)
@@ -45,14 +43,12 @@ struct HotelSearchBar : View {
                             }
                         }
                     }
-                        .padding(.horizontal, 32)
+                    .padding(.horizontal, 32)
                 )
         }
         .padding(.bottom, 20)
-//        .background(Color.white)
     }
 }
-
 
 // Hotel SortingButtonView
 struct SortingButtonView: View {
@@ -96,7 +92,7 @@ struct SortingButtonView: View {
     }
 }
 
-
+// View Modifier for Button Highlight
 struct ButtonHighlightModifier: ViewModifier {
     var selectedSortType: SortType
     var sortType: SortType
@@ -110,47 +106,45 @@ struct ButtonHighlightModifier: ViewModifier {
     }
 }
 
-
-// Hotel List View
+// Hotel List Item View
 struct HotelListItemView: View {
 
     let index: Int
     let hotel: CustomHotelModel
 
     var body: some View {
-
-        if let url = URL(string: hotel.imageUrl) {
-                            AsyncImageView(url: url)
-                        } else {
-                            Text("Invalid URL")
-                        }
-
-
         VStack(alignment: .leading) {
+            if let url = URL(string: hotel.imageUrl) {
+                AsyncImageView(url: url)
+            } else {
+                Text("Invalid URL")
+            }
+
             HStack {
-                StarRatingView(rating: hotel.star) // Use the custom view here
+                StarRatingView(rating: hotel.star)
                                    .foregroundColor(.blue)
 
                 Text("(\(String( hotel.ratingcount)) Ratings)")
                     .font(.system(size: 14))
                 Spacer()
-
             }
+
             Text(hotel.name)
                 .font(Font.custom("PlayfairDisplay-Bold", size: 20))
                 .fontWeight(.bold)
                 .shadow(color: Color.black.opacity(0.2), radius: 3, x: 1, y: 1)
+
             Spacer(minLength: 1)
 
             Text(hotel.address)
                 .font(Font.custom("Lato-Regular", size: 13))
-            //                                    .fontWeight(.light)
                 .opacity(0.9)
-            //}
+
             HStack {
                 SwiftUI.Image(systemName: "location.circle.fill")
                     .font(Font.custom("Lato-Regular", size: 14))
                     .foregroundColor(.blue)
+
                 Text("\(String(format: "%.2f", hotel.destination)) Miles")
                     .font(Font.custom("Lato-Regular", size: 15))
                     .fontWeight(.light)
@@ -164,17 +158,14 @@ struct HotelListItemView: View {
                     Text(hotel.price)
                         .font(Font.custom("PlayfairDisplay-Bold", size: 20))
                         .fontWeight(.bold)
-
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
-
             }
         }
     }
 }
 
-
-
+// View for displaying star rating
 struct StarRatingView: View {
     let rating: Double
 
@@ -206,10 +197,8 @@ struct StarRatingView: View {
     }
 }
 
+// Model for Star Rating
 struct StarState {
     let imageName: String
     let color: Color
 }
-
-
-

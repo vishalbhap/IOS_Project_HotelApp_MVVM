@@ -7,11 +7,12 @@
 
 import SwiftUI
 
+// View for the login screen background
 struct LoginScreenBackground: View {
     var body: some View {
         LinearGradient(
 //            gradient: Gradient(colors: [Color("PrimaryBlue"), Color("SecondaryTeal")]),
-            gradient: Gradient(colors: [Color.yellow.opacity(0.7), Color.yellow.opacity(0.8)]),
+            gradient: Gradient(colors: [Color.purple.opacity(0.5), Color.purple.opacity(0.6)]),
             startPoint: .top,
             endPoint: .bottomLeading
         )
@@ -19,6 +20,7 @@ struct LoginScreenBackground: View {
     }
 }
 
+// View for the login screen title
 struct LoginTitle: View {
     var body: some View {
         VStack {
@@ -35,6 +37,7 @@ struct LoginTitle: View {
     }
 }
 
+// View for the email input field
 struct EmailInputFieldView: View {
     @StateObject var loginViewModel: LoginViewModel
 
@@ -68,7 +71,7 @@ struct EmailInputFieldView: View {
         }
     }
 
-
+// View for the password input field
 struct PasswordInputFieldView: View {
     @StateObject var loginViewModel: LoginViewModel
     @State private var isPasswordVisible = false
@@ -116,7 +119,7 @@ struct PasswordInputFieldView: View {
 }
 
 
-
+// View for displaying error messages
 struct ErrorMessageView: View {
     @StateObject var loginViewModel: LoginViewModel
 
@@ -127,6 +130,7 @@ struct ErrorMessageView: View {
     }
 }
 
+// View for the login button
 struct LoginButtonView: View {
     @StateObject var loginViewModel: LoginViewModel
 
@@ -159,6 +163,7 @@ struct LoginButtonView: View {
     }
 }
 
+// View for keeping signed in and forgot password options
 struct KeepSignedForgotPasswordView: View {
     @StateObject var loginViewModel: LoginViewModel
 

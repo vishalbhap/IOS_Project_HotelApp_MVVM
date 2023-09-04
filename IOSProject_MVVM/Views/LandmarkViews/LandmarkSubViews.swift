@@ -4,11 +4,10 @@
 //
 //  Created by Vishal Bhapkar on 09/08/23.
 //
-
 import Foundation
 import SwiftUI
 
-// Search Bar View with Button action
+// View for a search bar with a text input field and search button
 struct SearchBarView: View {
     @Binding var textInput: String
     var searchAction: () -> Void
@@ -27,11 +26,10 @@ struct SearchBarView: View {
             }
             .padding()
         }
-
     }
 }
 
-// List View For Landmarks
+// View for displaying a list of landmarks
 struct LandmarkListView: View {
     var entities: [Entity]
     @EnvironmentObject var loginViewModel: LoginViewModel
@@ -39,12 +37,11 @@ struct LandmarkListView: View {
 
     var body: some View {
         Text("Showing results for \(landMarkViewModel.textInputForLocation)")
-        
+
         List(entities) { landmark in
             NavigationLink {
                 HotelListScreenView(geoId: landmark.geoId)
                     .environmentObject(loginViewModel)
-                    
             } label: {
                 Text(landmark.name)
                     .foregroundColor(Color.primary)
