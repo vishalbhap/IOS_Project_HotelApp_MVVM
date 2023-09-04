@@ -18,7 +18,12 @@ class LoginViewModel: ObservableObject {
     @Published var isLoggedIn = false
     @Published var keepSignedIn = false
     
-    private let loginService = LoginService()
+    private let loginService: LoginService
+
+
+    init(loginService: LoginService) {
+        self.loginService = loginService
+    }
 
     var isDarkMode: Bool {
             UIScreen.main.traitCollection.userInterfaceStyle == .dark

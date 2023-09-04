@@ -8,24 +8,18 @@
 import SwiftUI
 
 struct LoginScreenView: View {
-    @StateObject var loginViewModel: LoginViewModel = LoginViewModel()    
+    @StateObject var loginViewModel: LoginViewModel = LoginViewModel(loginService: LoginAPIService())
 
     var body: some View {
         NavigationStack {
             ZStack {
                 LoginBackgroundView
-
                 VStack {
                         LoginTitleView
-
                         EmailTextInputFieldView
-
                         PasswordTextInputFieldView
-
                         ErrorMessageFieldView
-
                         KeepSignedForgotPasswordFieldView
-
                         LoginButtonFieldView
             }
             .padding()
