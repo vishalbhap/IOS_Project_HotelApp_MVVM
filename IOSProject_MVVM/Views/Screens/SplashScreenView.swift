@@ -15,7 +15,7 @@ struct SplashView: View {
 
         ZStack {
             // Background color (You can replace this with your own background view)
-            Color.purple.opacity(0.5).ignoresSafeArea()
+            Color.purple.opacity(0.3).ignoresSafeArea()
 
             VStack {
                 // Logo or image (Replace "SplashScreen" with your logo image name)
