@@ -114,6 +114,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6965D3E12AA5B24D00846F7A /* LoginService */ = {
+			isa = PBXGroup;
+			children = (
+				69FD12972A989FC000712630 /* LoginService.swift */,
+			);
+			path = LoginService;
+			sourceTree = "<group>";
+		};
+		6965D3E22AA5B25A00846F7A /* HotelService */ = {
+			isa = PBXGroup;
+			children = (
+				696F0EE32A8CAC750048C851 /* HotelListService.swift */,
+				69FD12852A9602FD00712630 /* HotelAddressService.swift */,
+			);
+			path = HotelService;
+			sourceTree = "<group>";
+		};
+		6965D3E32AA5B26700846F7A /* LandmarkService */ = {
+			isa = PBXGroup;
+			children = (
+				69AAEFE52A824DE3001240BB /* LandmarkService.swift */,
+			);
+			path = LandmarkService;
+			sourceTree = "<group>";
+		};
+		6965D3E42AA5B29000846F7A /* CommonService */ = {
+			isa = PBXGroup;
+			children = (
+				69AAEFE72A82509E001240BB /* CommonAPIService.swift */,
+			);
+			path = CommonService;
+			sourceTree = "<group>";
+		};
 		696F0E822A86003F0048C851 /* ErrorHandlers */ = {
 			isa = PBXGroup;
 			children = (
@@ -209,11 +242,10 @@
 		69AAEFBB2A82062A001240BB /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				69FD12972A989FC000712630 /* LoginService.swift */,
-				69AAEFE52A824DE3001240BB /* LandmarkService.swift */,
-				696F0EE32A8CAC750048C851 /* HotelListService.swift */,
-				69FD12852A9602FD00712630 /* HotelAddressService.swift */,
-				69AAEFE72A82509E001240BB /* CommonAPIService.swift */,
+				6965D3E42AA5B29000846F7A /* CommonService */,
+				6965D3E12AA5B24D00846F7A /* LoginService */,
+				6965D3E32AA5B26700846F7A /* LandmarkService */,
+				6965D3E22AA5B25A00846F7A /* HotelService */,
 			);
 			path = Services;
 			sourceTree = "<group>";

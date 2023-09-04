@@ -14,7 +14,6 @@ struct APIConfig {
     static let baseUrl = "https://hotels4.p.rapidapi.com/"
 }
 
-
 protocol DataService {
 
     func dataForUrl(urlRequest: URLRequest)

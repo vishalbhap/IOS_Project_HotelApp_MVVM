@@ -36,7 +36,7 @@ class HotelListAPIService: HotelListServiceProtocol {
 
         do {
             let decodedData = try JSONDecoder().decode(HotelListResponse.self, from: data)
-            return await toHotelModels(properties: decodedData.data?.propertySearch?.properties ?? [])
+            return await propertiesToHotelModelsConverter(properties: decodedData.data?.propertySearch?.properties ?? [])
         } catch {
             throw HotelListServiceError.invalidData
         }
@@ -61,7 +61,7 @@ class HotelListAPIService: HotelListServiceProtocol {
         return hotelRequestData
     }
 
-    func toHotelModels(properties: [Properties]) async -> [CustomHotelModel] {
+    func propertiesToHotelModelsConverter(properties: [Properties]) async -> [CustomHotelModel] {
         var hotelModels: [CustomHotelModel] = []
 
         for property in properties {
@@ -104,10 +104,6 @@ class HotelListMockService: HotelListServiceProtocol {
             CustomHotelModel(name: "Gavran Tadka", address: "SB Road, Pune Maharashtra", price: "123$", strikeouprice: "150$", ratingcount: 151, star: 4.5, destination: 20.5, imageUrl: "https://images.trvl-media.com/lodging/96000000/95240000/95233900/95233817/0391f9c1.jpg?impolicy=resizecrop&rw=455&ra=fit")
 
         ]
-
         return hotels
-
     }
-
-
 }
