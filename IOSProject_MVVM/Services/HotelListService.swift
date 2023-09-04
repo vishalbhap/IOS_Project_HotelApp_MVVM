@@ -11,7 +11,7 @@ protocol HotelListServiceProtocol {
     func fetchHotels(geoId: String, sortType: String, pageLimit: Int, pageIndex: Int) async throws -> HotelListResponse
 }
 
-class HotelListService: HotelListServiceProtocol {
+class HotelListAPIService: HotelListServiceProtocol {
 
     func fetchHotels(geoId: String, sortType: String, pageLimit: Int, pageIndex: Int) async throws -> HotelListResponse {
         guard let url = URL(string: "https://hotels4.p.rapidapi.com/properties/v2/list") else {
@@ -61,3 +61,14 @@ class HotelListService: HotelListServiceProtocol {
         return hotelRequestData
     }
 }
+
+
+
+//class HotelListMockService: HotelListServiceProtocol {
+//
+//    func fetchHotels(geoId: String, sortType: String, pageLimit: Int, pageIndex: Int) async throws -> HotelListResponse {
+//        
+//    }
+//
+//
+//}
