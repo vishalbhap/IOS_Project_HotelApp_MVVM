@@ -29,24 +29,28 @@ enum CommonError: Error, LocalizedError{
     }
 }
 
+// Class for handling internet-related errors and monitoring network connectivity.
 class NetworkManager: ObservableObject {
     let monitor = NWPathMonitor()
     let queue = DispatchQueue(label: "NetworkManager")
     @Published var isConnected = true
 
+    // Computed property for displaying a connection description.
     var connectionDescription: String {
         if isConnected {
             return "Internet connection looks good"
         } else {
-            return "It looks like you are not connected to Internet"
+            return "It looks like you are not connected to the Internet"
         }
     }
 
+    // Computed property for selecting the appropriate image based on connectivity.
     var imageName: String {
         return isConnected ? "wifi" : "wifi.slash"
     }
 
     init() {
+        // Initialize the network monitor and set up a closure to handle path updates.
         monitor.pathUpdateHandler = { path in
             DispatchQueue.main.async {
                 self.isConnected = path.status == .satisfied

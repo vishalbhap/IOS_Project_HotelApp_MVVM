@@ -10,32 +10,32 @@ import SwiftUI
 
 @MainActor
 class LoginViewModel: ObservableObject {
+
+    // Published properties that trigger UI updates when their values change.
     @Published var username = "john@gmail.com"
     @Published var password = "Cybage@123"
-//    @Published var username = ""
-//    @Published var password = ""
     @Published var errorMessage = ""
     @Published var isLoggedIn = false
     @Published var keepSignedIn = false
-    
+
     private let loginService: LoginService
 
-
+    // Initialize the view model with a service conforming to LoginService.
     init(loginService: LoginService) {
         self.loginService = loginService
     }
 
+    // Computed property to check if the app is in dark mode.
     var isDarkMode: Bool {
-            UIScreen.main.traitCollection.userInterfaceStyle == .dark
+        UIScreen.main.traitCollection.userInterfaceStyle == .dark
     }
 
-
-    // Calling service functionality
+    // Function to perform the login action.
     func login() async {
         guard validateInput() else {
             return
         }
-        
+
         do {
             let loginResponseArray = try await loginService.login(username: username, password: password)
             try authenticateUser(loginModelArray: loginResponseArray)
@@ -46,11 +46,7 @@ class LoginViewModel: ObservableObject {
         }
     }
 
-
-
-    
-
-    // validate all input validations
+    // Function to validate user input.
     func validateInput() -> Bool {
         guard !username.isEmpty else {
             errorMessage = "Username is required"
@@ -75,8 +71,7 @@ class LoginViewModel: ObservableObject {
         return true
     }
 
-
-    // authenticate credentials to login successfully
+    // Function to authenticate the user.
     func authenticateUser(loginModelArray: [LoginModel]) throws {
         guard username == loginModelArray[0].email && password == loginModelArray[0].password else {
             throw LoginError.invalidCredentials
@@ -84,6 +79,7 @@ class LoginViewModel: ObservableObject {
         clearCredentials()
     }
 
+    // Function to handle login errors.
     func handleLoginError(_ error: Error) {
         if let apiError = error as? LoginError {
             errorMessage = apiError.localizedDescription
@@ -93,24 +89,13 @@ class LoginViewModel: ObservableObject {
         isLoggedIn = false
     }
 
-
+    // Function to clear user credentials.
     func clearCredentials() {
         username = ""
         password = ""
     }
 
-    func isValidEmail(_ email: String) -> Bool {
-        let emailRegex = #"^[A-Za-z0-9+_.-]+@(.+)$"#
-        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
-        return emailPredicate.evaluate(with: email)
-    }
-
-    func isValidPassword(_ password: String) -> Bool {
-        let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{6,}$"
-        let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
-        return passwordPredicate.evaluate(with: password)
-    }
-
+    // Function to validate email format.
     func validateEmail(){
         guard isValidEmail(username) else {
             errorMessage = "Invalid email format"
@@ -118,10 +103,25 @@ class LoginViewModel: ObservableObject {
         }
     }
 
+    // Function to validate password format.
     func validatePassword(){
         guard isValidPassword(password) else {
             errorMessage = "Password must be at least 6 characters long and contain letters, digits, and special characters"
             return
         }
+    }
+
+    // Function to validate if an email is in the correct format.
+    func isValidEmail(_ email: String) -> Bool {
+        let emailRegex = #"^[A-Za-z0-9+_.-]+@(.+)$"#
+        let emailPredicate = NSPredicate(format: "SELF MATCHES %@", emailRegex)
+        return emailPredicate.evaluate(with: email)
+    }
+
+    // Function to validate if a password meets the criteria.
+    func isValidPassword(_ password: String) -> Bool {
+        let passwordRegex = "^(?=.*[A-Za-z])(?=.*\\d)(?=.*[@$!%*#?&])[A-Za-z\\d@$!%*#?&]{6,}$"
+        let passwordPredicate = NSPredicate(format: "SELF MATCHES %@", passwordRegex)
+        return passwordPredicate.evaluate(with: password)
     }
 }

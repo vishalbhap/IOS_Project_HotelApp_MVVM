@@ -11,6 +11,7 @@
 		6965D3DC2A9F6A0000846F7A /* HotelListSubViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6965D3DB2A9F6A0000846F7A /* HotelListSubViews.swift */; };
 		6965D3DE2A9F6B4400846F7A /* ExtensionLandmarkScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6965D3DD2A9F6B4400846F7A /* ExtensionLandmarkScreen.swift */; };
 		6965D3E02A9F6BD400846F7A /* ExtensionLoginScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6965D3DF2A9F6BD400846F7A /* ExtensionLoginScreen.swift */; };
+		6965D3E62AA5CBDC00846F7A /* HotelListServiceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6965D3E52AA5CBDC00846F7A /* HotelListServiceExtension.swift */; };
 		696F0E842A86006C0048C851 /* LandmarkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696F0E832A86006C0048C851 /* LandmarkError.swift */; };
 		696F0E882A8607320048C851 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696F0E872A8607320048C851 /* ContentView.swift */; };
 		696F0E8A2A8613310048C851 /* CommonErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696F0E892A8613310048C851 /* CommonErrors.swift */; };
@@ -59,6 +60,7 @@
 		6965D3DB2A9F6A0000846F7A /* HotelListSubViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelListSubViews.swift; sourceTree = "<group>"; };
 		6965D3DD2A9F6B4400846F7A /* ExtensionLandmarkScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionLandmarkScreen.swift; sourceTree = "<group>"; };
 		6965D3DF2A9F6BD400846F7A /* ExtensionLoginScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionLoginScreen.swift; sourceTree = "<group>"; };
+		6965D3E52AA5CBDC00846F7A /* HotelListServiceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelListServiceExtension.swift; sourceTree = "<group>"; };
 		696F0E832A86006C0048C851 /* LandmarkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkError.swift; sourceTree = "<group>"; };
 		696F0E872A8607320048C851 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		696F0E892A8613310048C851 /* CommonErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonErrors.swift; sourceTree = "<group>"; };
@@ -126,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				696F0EE32A8CAC750048C851 /* HotelListService.swift */,
+				6965D3E52AA5CBDC00846F7A /* HotelListServiceExtension.swift */,
 				69FD12852A9602FD00712630 /* HotelAddressService.swift */,
 			);
 			path = HotelService;
@@ -242,10 +245,10 @@
 		69AAEFBB2A82062A001240BB /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				6965D3E42AA5B29000846F7A /* CommonService */,
 				6965D3E12AA5B24D00846F7A /* LoginService */,
 				6965D3E32AA5B26700846F7A /* LandmarkService */,
 				6965D3E22AA5B25A00846F7A /* HotelService */,
+				6965D3E42AA5B29000846F7A /* CommonService */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -419,6 +422,7 @@
 				69AAEFDD2A82280D001240BB /* HotelDiscountView.swift in Sources */,
 				69FD12862A9602FD00712630 /* HotelAddressService.swift in Sources */,
 				69FD12AA2A9BCE6400712630 /* SplashScreenView.swift in Sources */,
+				6965D3E62AA5CBDC00846F7A /* HotelListServiceExtension.swift in Sources */,
 				69AAF0212A826332001240BB /* DesinationInfo.swift in Sources */,
 				69AAEFE82A82509E001240BB /* CommonAPIService.swift in Sources */,
 				6965D3DA2A9F696100846F7A /* ExtensionHotelListScreen.swift in Sources */,

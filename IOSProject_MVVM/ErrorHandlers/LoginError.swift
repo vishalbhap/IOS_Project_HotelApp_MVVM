@@ -23,7 +23,7 @@ enum LoginError: Error, LocalizedError {
         case .serverError:
             return "There was an error with the server. Please try again later"
         case .invalidData:
-            return "Failed to Decode. The landmark data is invalid."
+            return "Failed to Decode. The login data is invalid."
         case .unknown(let error):
             return error.localizedDescription
         }

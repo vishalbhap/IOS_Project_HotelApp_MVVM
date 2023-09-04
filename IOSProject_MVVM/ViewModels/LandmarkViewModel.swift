@@ -7,6 +7,7 @@
 
 import Foundation
 
+// Protocol defining the interface for a LandmarkViewModel.
 protocol LandmarkViewModelProtocol: ObservableObject {
     func fetchLandMarks() async
 }
@@ -14,6 +15,7 @@ protocol LandmarkViewModelProtocol: ObservableObject {
 @MainActor
 class LandmarkViewModel: LandmarkViewModelProtocol {
 
+    // Published properties that trigger UI updates when their values change.
     @Published var hasError: Bool = false
     @Published var textInputForLocation: String = ""
     @Published var state: ViewState = .none
@@ -21,12 +23,14 @@ class LandmarkViewModel: LandmarkViewModelProtocol {
     @Published var entities: [Entity] = []
     private let landMarkService: LandmarkServiceProtocol
 
-
+    // Initialize the view model with a service conforming to LandmarkServiceProtocol.
     init(landMarkService: LandmarkServiceProtocol) {
         self.landMarkService = landMarkService
     }
 
+    // Function to fetch landmarks based on user input.
     func fetchLandMarks() {
+        // Validating user input
         guard !textInputForLocation.isEmpty else {
             self.state = .noTextInput
             return
@@ -36,9 +40,9 @@ class LandmarkViewModel: LandmarkViewModelProtocol {
         Task {
             do {
                 let decodedData = try await landMarkService.fetchLandMarksData(location: textInputForLocation)
-                if decodedData.suggestions[0].entities.isEmpty{
+                if decodedData.suggestions[0].entities.isEmpty {
                     self.state = .dataEmpty
-                }else{
+                } else {
                     self.state = .success
                     self.entities = decodedData.suggestions[0].entities
                 }
@@ -48,16 +52,17 @@ class LandmarkViewModel: LandmarkViewModelProtocol {
         }
     }
 
+    // Function to handle fetch errors.
     private func handleFetchError(_ error: Error) {
         state = .failed(error: error)
         hasError = true
     }
 
+    // Function for implementing logout actions.
     func logout() {
         // Implement logout actions here
         // This might include clearing user data, resetting the login state, etc.
     }
-
 }
 
 
