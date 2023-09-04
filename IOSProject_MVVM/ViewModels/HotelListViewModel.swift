@@ -41,8 +41,7 @@ class HotelListViewModel: ObservableObject {
           Task {
               do {
                   let decodedData = try await fetchHotelData(geoId: geoId)
-                  let properties = decodedData.data?.propertySearch?.properties ?? []
-                  hotels.append(contentsOf: await toHotelModels(properties: properties))
+                  hotels.append(contentsOf: decodedData)
                   state = .success
               } catch {
                   handleFetchError(error)
@@ -50,41 +49,15 @@ class HotelListViewModel: ObservableObject {
           }
       }
 
-      private func fetchHotelData(geoId: String) async throws -> HotelListResponse {
-          return try await hotelListService.fetchHotels(geoId: geoId, sortType: sortType.description, pageLimit: pageLimit, pageIndex: pageIndex)
-      }
+    private func fetchHotelData(geoId: String) async throws -> [CustomHotelModel] {
+        return try await hotelListService.fetchHotels(geoId: geoId, sortType: sortType.description, pageLimit: pageLimit, pageIndex: pageIndex)
+    }
 
       private func handleFetchError(_ error: Error) {
           print("Error fetching hotels: \(error)")
           state = .failed(error: error)
           hasError = true
       }
-    
-    func toHotelModels(properties: [Properties]) async -> [CustomHotelModel] {
-        var hotelModels: [CustomHotelModel] = []
-
-        for property in properties {
-            var address = "Address not available"
-            let latitude = property.mapMarker.latLong.latitude
-            let longitude = property.mapMarker.latLong.longitude
-
-            address = await HotelAddressService().getAddressFromCoordinates(latitude: latitude, longitude: longitude)
-
-
-            let hotelModel = CustomHotelModel(name: property.name,
-                                        address: address,
-                                        price: property.price?.options[0].formattedDisplayPrice ?? "Nil",
-                                        strikeouprice: property.price?.options[0].strikeOut?.formatted ?? "",
-                                        ratingcount: property.reviews?.total ?? 10,
-                                        star: property.star ?? 3.5,
-                                        destination: property.destinationInfo?.distanceFromDestination.value ?? 0,
-                                        imageUrl: property.propertyImage?.image.url ?? ""
-            )
-            hotelModels.append(hotelModel)
-        }
-
-        return hotelModels
-    }
 }
 
 enum SortType: CustomStringConvertible {
